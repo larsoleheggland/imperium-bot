@@ -148,6 +148,17 @@ class _CardFormInputState extends State<CardFormInput> {
                       fontWeight: FontWeight.bold, fontSize: 27)),
             ),
             Divider(height: 20, color: Colors.white54),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: Colors.green),
+                    onPressed: () {
+                      _onConfirmCard();
+                    },
+                    child: const Text("Confirm card")),
+              ],
+            ),
             _generateTokenInputs(),
             if (acquireType == CardAcquireType.acquire)
               CheckboxListTile(
@@ -169,23 +180,6 @@ class _CardFormInputState extends State<CardFormInput> {
                     ListTileControlAffinity.leading, //  <-- leading Checkbox
               ),
             Divider(height: 20, color: Colors.white54),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: Colors.green),
-                    onPressed: () {
-                      _onConfirmCard();
-                    },
-                    child: const Text("Confirm card")),
-                const SizedBox(width: 20),
-                ElevatedButton(
-                    onPressed: () {
-                      _onNotPossible();
-                    },
-                    child: const Text("Can't acquire card")),
-              ],
-            ),
           ],
         ),
       );

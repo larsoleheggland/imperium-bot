@@ -47,21 +47,15 @@ class BotCubit extends Cubit<BotState> {
   }
 
   Future<bool> alertRequireCardExile() async {
-    var userDirections = const Text("Exile a card");
+    var userDirections = const Text("Exile a card from market");
 
     return await requireUserAction("Exile card", userDirections);
   }
 
-  Future<bool> alertAddUnrestCard() async {
-    var userDirections = const Text("Add unrest card to unrest pile");
-
-    return await requireUserAction("Unrest", userDirections);
-  }
-
   Future<bool> alertTakeUnrest() async {
-    var userDirections = const Text("Take one unrest card");
+    var userDirections = const Text("You take one unrest card");
 
-    return await requireUserAction("Unrest", userDirections);
+    return await requireUserAction("Attack", userDirections);
   }
 
   Future<bool> alertUserMayDrawCard() async {

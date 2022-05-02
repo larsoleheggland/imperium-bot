@@ -27,6 +27,7 @@ class CardDatabase {
         "unrest",
         "",
         "",
+        "",
         "Choose: Pay 1 Pop OR discard 2 cards OR pay 3 Materials. If you do, return this card to the unrest pile.",
         "",
         "",

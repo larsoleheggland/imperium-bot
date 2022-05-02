@@ -1,125 +1,125 @@
-Name;Type;Icon 1;Icon 2;Icon 3;Play Effect;Passive Effect;Exhaust Effect;Solstice Effect;VP;Player Count;Set
-Standing Army;Uncivilised;;Pinned;;;Passive: when another player plays an Attack, ignore the effects unless they give you 1 Progress.;;;1;4;Classics
-Jade Mask;Uncivilised;;;Mask;Draw up to 3 cards if able. Then return a card to the top of your deck.;;;;1 if in history;2;Classics
-Elders;Uncivilised;;;;Choose: acquire Uncivilised OR break through for Civilised and all other players gain 1 Progress.;;;;1;2;Classics
-Town;Uncivilised;Barbarian;Pinned;;;;Exhaust: all players MAY gain 2 Materials.;Solstice: you MAY gain 2 Progress. If you do, choose: abandon this card OR put it into your history.;2 if in history;2;Classics
-Town;Uncivilised;Barbarian;Pinned;;;;"Exhaust: all players MAY gain 2 Materials. ";Solstice: you MAY gain 2 Progress. If you do, choose: abandon this card OR put it into your history.;2 if in history;2;Classics
-Shrine;Uncivilised;Barbarian;Pinned;;;;Exhaust: pay 1 Materials to draw a card.;Solstice: you MAY discard a card to return an Unrest from your discard pile.;1;2;Classics
-Invasion;Uncivilised;;Attack;;Pay 3 Materials. All other players take Unrest. Choose: break through for Tributary OR break through for Region and each other player recalls a Region.;;;;1;2;Classics
-Musticism;Uncivilised;;Pinned;;;;Exhaust: gain 1 action. Solstice: choose: take Unrest OR discard 2 cards.;;1;2;Classics
-Oracle;Uncivilised;Barbarian;;;Free play. Draw 2 cards and discard one of them.;;;;2 per Fame card;2;Classics
-Agriculture;Uncivilised;;Pinned;;;;Exhaust: treat 1 Grain as 3 Trade for the rest of the turn.;;2 per Grain;2;Classics
-Boats;Uncivilised;;Pinned;;;;Exhaust: choose: recall a Water to gain 2 Materials and 1 Pop OR recall a Grain to gain 1 action.;;1 per Grain/Water;2;Classics
-Leadership;Uncivilised/Civilised;;;;Free play. Choose: draw a card OR put a card from your hand or discard pile into your history.;;;;1;1;Classics
-Shaduf;Uncivilised;;Pinned;;;;Exhaust: when you gain Materials from a Water in play, exhaust this card to gain 1 Progress.;;2 per Water;2;Classics
-Lost Scroll;Uncivilised/Civilised;;;;Free play. You MAY return a card from your discard pile to the top of your deck. All players MAY draw a card.;;;;1 if in history;3;Classics
-Rituals & Ceremonies;Uncivilised;Barbarian;;;Free play. Choose: return an Unrest OR gain 1 Progress and you MAY return an Exhausted to your state card.;;;;1;3;Classics
-Ambassador;Uncivilised/Civilised;;;;;;Exhaust: resolve the exhaust keyword on an opponent's Pinned card as though it were your own.;;1;3;Classics
-City;Uncivilised/Civilised;;Pinned;City;;;;Solstice: you MAY discard a card to choose: gain 1 Pop OR gain 1 Materials OR draw a card.;1;2;Classics
-City;Uncivilised/Civilised;;Pinned;City;;;;Solstice: you MAY discard a card to choose: gain 1 Pop OR gain 1 Materials OR draw a card.;1;2;Classics
-City;Uncivilised/Civilised;;Pinned;City;;;;Solstice: you MAY discard a card to choose: gain 1 Pop OR gain 1 Materials OR draw a card.;1;2;Classics
-Gambling;Uncivilised/Civilised;;;;Free play. Pay 1 Materials and declare one of the following: Uncivilised, Civilised, Region or Tributary. Reveal the top card of the main deck. If it matches the declared type, add it to your hand. Otherwise, exile it.;;;;1;2;Classics
-Port;Uncivilised/Civilised;;Pinned;;;;Exhaust: gain 1 Materials per Water in your play area. You MAY pay 3 Materials to draw a card of your choice from your discard pile.;;1;2;Classics
-Diplomacy;Uncivilised/Civilised;;;;Pay 3 Materials to break through for Tributary.;;;;1;2;Classics
-Wilderness;Region;;Pinned;;Exile a card from the Market. You MAY garrison a card. Passive: you MAY recall this card to avoid the effect of an Attack.;;;;1;3;Classics
-Jungle;Region;;Pinned;;Gain 1 Pop. Exile a card from the market. You MAY garrison a card.;;;;1;2;Classics
-Mountain;Region;;Pinned;;Gain 3 Materials. Exile a card from the market. You MAY garrison a card.;;;;1;2;Classics
-Coast;Region;;Pinned;Trade, Grain;Draw a card. Exile a card from the market. You MAY garrison a card.;;;;0;2;Classics
-Floodplain;Region;;Pinned;Trade, Water;You MAY put a card from your discard pile into your history. Exile a card from the market. You MAY garrison a card.;;;;0;2;Classics
-Forest;Region;;Pinned;Trade, Trade, Grain;Exile a card from the market. You MAY garrison a card.;;;;0;2;Classics
-Oasis;Region;;Pinned;Trade, Trade, Water;Exile a card from the market. You MAY garrison a card.;;;;0;2;Classics
-Hills;Region;;Pinned;Trade, Grain;Gain 1 Pop. Exile a card from the market. You MAY garrison a card.;;;;0;2;Classics
-Marsh;Region;;Pinned;Trade, Water;Gain 2 Materials. Exile a card from the market. You MAY garrison a card.;;;;0;2;Classics
-Steppe;Region;;Pinned;Trade, Trade, Grain;Exile a card from the market. You MAY garrison a card.;;;;0;2;Classics
-River;Region;;Pinned;Trade, Trade, Water;You MAY put a card from your discard pile into your history. Exile a card from the market. You MAY garrison a card.;;;;0;2;Classics
-Cape;Region;;Pinned;Trade, Water;"Exile a card from the Market. You MAY garrison a card. ";Passive: you MAY recall this card to avoid the effect of an Attack.;;;0;2;Classics
-Woodland;Region;;Pinned;Trade, Grain;You MAY draw a card of your choice from your discard pile and place it on top of your draw deck. Exile a card from the Market. You MAY garrison a card.;;;;0;2;Classics
-Sacred Pass;Region;Barbarian;Pinned;;;;Exhaust: you MAY look at the top card of your nation deck. You MAY then abandon this card to swap a card from your hand with the top card of your nation deck.;;1;2;Classics
-Armenians;Tributary;;;;Acquire Uncilised. Put this card into your history.;;;;3;2;Classics
-Assyrians;Tributary;;;;Free play. Gain 1 Pop;;;;3;2;Classics
-Egyptians;Tributary;;;;If Barbarian, put the top card of your nation deck into your dicard pile. If Empire, develop. Put this card into your history.;;;;1 per Civilised;2;Classics
-Ionians;Tributary;;;;Free play. Return up to 2 Unrest from your hand or discard pile. Put this card into your history.;;;;3;2;Classics
-Qin;Tributary;;;;;Passive: increase your hand size by 1.;;;1 per 3 Pinned cards in play, exluding Regions;2;Classics
-Olmecs;Tributary;;;;Free play. Return an Exhaust to your state card.;;;;3;3;Classics
-Sumerians;Tributary;;;;Cannot be played. Return up to 2 Unrest before scoring.;;;;3;2;Classics
-Askumites;Tributary;;;;Gain 4 Materials.;;;;1 per Tributary;2;Classics
-Minoans;Tributary;Barbarian;;;Free play. Place a card on top of your deck and gain 2 Progress.;;;;1 per 4 Progress;2;Classics
-Mauryans;Tributary;;Pinned;;;;;Solstice: choose: gain 2 Materials OR return a Region from your discard pile to your hand.;1 per 2 cards in history;4;Classics
-Hittites;Tributary;;;;Break through for Region. Put this card into your history.;;;;3;2;Classics
-Drama & Poetry;Civilised;Empire;Attack;;Free play. Steal 1 Progress from each other player. Each player MAY discard a card to return an Unrest.;;;;2;4;Classics
-Education;Civilised;Empire;;;Free play. You MAY put a card from your hand into your history. You MAY put a card from your discard pile into your history.;;;;2;2;Classics
-Moneylenders;Civilised;Empire;;;Free play. Pay 3 Materials to gain 1 action.;;;;1 per 10 Materials;2;Classics
-Corruption;Civilised;Empire;Attack;;All players gain 2 Materials. All other players take Unrest. Gain 1 Progress.;;;;2;2;Classics
-Onager;Civilised;Empire;Attack;;Each other player abandons a City. Gain 2 Materials per abandoned City. You MAY acquire Region/Tributary.;;;;2;2;Classics
-Temple;Civilised;Empire;Pinned;;;;"Exhaust: discard a card to gain 1 Progress. ";Solstice: return an Unrest from your discard pile.;1 per 5 Progress;2;Classics
-Cataphract;Civilised;Empire;Attack;Helmet;Each other player abandons a Region. You MAY acquire Region/Tributary. You MAY garrison this card in a Region to trigger that card's play effect.;;;;2;2;Classics
-Metropolis;Civilised;Empire;Pinned;Metropolis;;;;Solstice: choose: gain 1 Pop OR gain 1 Materials OR draw a card.;2;2;Classics
-Metropolis;Civilised;Empire;Pinned;Metropolis;;;;Solstice: choose: gain 1 Pop OR gain 1 Materials OR draw a card.;2;2;Classics
-Pharmacy;Civilised;Empire;Pinned;;;;;Solstice: choose: gain 1 Pop OR pay 2 Pop to gain 1 Progress.;2;2;Classics
-Wonder;Civilised;Empire;Pinned;;;;Exhaust: when you return an Unrest, exhaust this card to gain 2 Progress.;;2;3;Classics
-Coinage;Civilised;Empire;Pinned;;;;Exhaust: draw a card. Solstice: gain 2 Materials.;;2;2;Classics
-Exports;Civilised;Empire;Attack;;All players gain 2 Materials. Give each other player a card from your hand or discard pile.;;;;1 per 10 cards;2;Classics
-Urban Development;Civilised;Empire;;;Gain 1 Materials and 1 Pop per City/Metropolis in your play area.;;;;2 per City/Metropolis;2;Classics
-Mercenaries;Civilised;Empire;;;Free play. Pay 1 Pop to gain 1 action.;;;;1 per 4 Pop;3;Classics
-Mining;Uncivilised;;Pinned;;;;Exhaust: abandon a Region to gain 1 Progress. If the abandoned card has no Trade, gain an additional Progress.;;1;4;Legends
-Jade Mask;Uncivilised;;;Mask;Draw up to 3 cards if able. Then return a card to the top of your deck.;;;;1 if in history;2;Legends
-Elders;Uncivilised;;;;Choose: acquire Uncivilised OR break through for Civilised and all other players gain 1 Progress.;;;;1;2;Legends
-Espionage;Uncivilised;;Attack;;Place a card on the top of your draw deck to acquire Uncivilised/Civilised/Region/Tributary. Each other player recalls a Pinned card.;;;;1;2;Legends
-Invasion;Uncivilised;;Attack;;Pay 3 Materials. All other players take Unrest. Choose: break through for Tributary OR break through for Region and each other player recalls a Region.;;;;1;2;Legends
-Monument;Uncivilised;Barbarian;Pinned;;;;Exhaust: free play an Unrest.;;1;2;Legends
-Code of Laws;Uncivilised;;Pinned;;;;Exhaust: draw a card.;;1;2;Legends
-Religion;Uncivilised;;Pinned;;;;Exhaust: gain 1 action.;Solstice: choose: take Unrest or pay 3 Materials.;1;2;Legends
-Oracle;Uncivilised;Barbarian;;;Free play. Draw 2 cards and discard one of them.;;;;2 per Fame card;2;Legends
-Domestication;Uncivilised;;Pinned;;;;Exhaust: when you gain Materials from a Grain in play, exhaust this card to gain 1 Progress.;;2 per Grain;2;Legends
-Water Mill;Uncivilised;;Pinned;;;;Exhaust: choose: recall a Grain to gain 2 Materials and 1 Pop OR recall a Water to gain 1 action.;;1 per Grain/Water;2;Legends
-Qanat;Uncivilised;;Pinned;;;;Exhaust: treat 1 Water as 3 Trade for the rest of the turn.;;2 per Water;2;Legends
-Rituals & Ceremonies;Uncivilised;Barbarian;;;Free play. Choose: return an Unrest OR gain 1 Progress and you MAY return an Exhausted to your state card.;;;;1;3;Legends
-City;Uncivilised/Civilised;;Pinned;City;;;;Solstice: you MAY discard a card to choose: gain 1 Pop OR gain 1 Materials OR draw a card.;1;2;Legends
-City;Uncivilised/Civilised;;Pinned;City;;;;Solstice: you MAY discard a card to choose: gain 1 Pop OR gain 1 Materials OR draw a card.;1;2;Legends
-City;Uncivilised/Civilised;;Pinned;City;;;;Solstice: you MAY discard a card to choose: gain 1 Pop OR gain 1 Materials OR draw a card.;1;2;Legends
-City;Uncivilised/Civilised;;Pinned;City;;;;Solstice: you MAY discard a card to choose: gain 1 Pop OR gain 1 Materials OR draw a card.;1;3;Legends
-Road Building;Uncivilised/Civilised;;Pinned;;;Passive: your Conquer cards lose the Barbarian icon.;;Solstice: gain 2 Materials.;1;2;Legends
-Art;Uncivilised/Civilised;;Pinned;;;;;Solstice: If Barbarian, you MAY pay 1 Materials to return an Unrest. If Empire, you MAY pay 3 Materials to gain 1 Progress.;1;2;Legends
-Diplomacy;Uncivilised/Civilised;;;;Pay 3 Materials to break through for Tributary.;;;;1;2;Legends
-Leadership;Uncivilised/Civilised;;;;Free play. Choose: draw a card OR put a card from your hand or discard pile into your history.;;;;1;1;Legends
-Lost Scroll;Uncivilised/Civilised;;;Scroll;Free play. You MAY return a card from your discard pile to the top of your deck. All players MAY draw a card.;;;;1 if in history;3;Legends
-Fortunate Isle;Region;Barbarian;;;Acquire Uncivilised/Civilised/Region/Tributary. Exile this card.;;;;2;2;Legends
-Rainforest;Region;;Pinned;Trade, Grain;Gain 1 Pop. Exile a card from the market. You MAY garrison a card.;;;;;2;Legends
-Mountain;Region;;Pinned;Trade;Gain 2 Materials. Exile a card from the market. You MAY garrison a card.;;;;;2;Legends
-Peninsula;Region;;Pinned;Trade, Trade, Water;Draw 2 cards. Exile a card from the market. You MAY garrison a card.;;;;;2;Legends
-Lakes;Region;;Pinned;Trade, Water, Water;You MAY put a card from your discard pile into your history. Exile a card from the market. You MAY garrison a card.;;;;;2;Legends
-Highlands;Region;;Pinned;Trade;Exile a card from the market. You MAY garrison a card.;;;Solstice: gain 2 Pop and discard a card.;;2;Legends
-Sacred Grove;Region;;;;Gain 1 Progress. You MAY put a card from your hand into your history. Put this card into your history.;;;;2 per player with fewer Progress than you;3;Legends
-Lowlands;Region;;Pinned;Trade;Exile a card from the market. You MAY garrison a card.;;;Solstice: gain 3 Materials and discard a card.;;2;Legends
-Moor;Region;;Pinned;Trade, Water;You MAY return a card of your choice from your discard pile to the top of your draw deck. Exile a card from the market. You MAY garrison a card.;;;;;2;Legends
-Plain;Region;;Pinned;Trade, Trade, Grain;Gain 1 Progress. Exile a card from the market. You MAY garrison a card.;;;;;2;Legends
-Archipelago;Region;;Pinned;Trade, Grain, Water;You MAY put a card from your discard pile into your history. Exile a card from the market. You MAY garrison a card.;;;;;2;Legends
-Fortified Region;Region;;Pinned;;Exile a card from the market. You MAY garrison a card.;;Exhaust: when another player plays an Attack, you MAY exhaust this card and pay 1 Pop to avoid its effects (even if it's another player's turn).;;1;2;Legends
-Grassland;Region;;Pinned;Trade, Grain;Exile a card from the market. You MAY garrison a card.;;;Solstice: draw a card and discard a card.;;2;Legends
-Island;Region;;Pinned;Trade, Grain, Water;Draw a card. Exile a card from the market. You MAY garrison a card.;;;;;2;Legends
-Etruscans;Tributary;Barbarian;;;Gain 2 Progress;;;;3;2;Legends
-Scythians;Tributary;;Pinned;;;;Exhaust: when another player plays an Attack, you MAY exhaust this card to avoid its effects (even if it's another player's turn).;;3;2;Legends
-Vikings;Tributary;Empire;Attack;;Gain 2 Materials. Steal 2 Materials from each other player. Anyone unable to pay takes Unrest.;;;;1 per 2 Uncivilised;2;Legends
-Phoenicians;Tributary;;;;Acquire Civilised. Put this card into your history.;;;;3;2;Legends
-Romans;Tributary;;;;Abandon a Region to draw the top Fame card. Exile this card. All other players gain 1 Progress.;;;;3;3;Legends
-Greeks;Tributary;Empire;Pinned;Metropolis;;;;Solstice: choose: gain 1 Pop OR gain 1 Materials OR draw a card.;1 per 10 cards;2;Legends
-Carthaginians;Tributary;;Attack;;Gain 2 Materials and draw a card. Give each other player a card from your hand or discard pile.;;;;1 per 10 Materials;2;Legends
-Persians;Tributary;;;;Gain 2 Pop to break through for Tributary. Put this card into your history.;;;;1 per Tributary;2;Legends
-Celts;Tributary;;Attack;;Break through for Uncivilised. Each other player takes Unrest.;;;;3;2;Legends
-Macedonians;Tributary;;;;Acquire Region twice (including from Exiled cards). Put this card into your history.;;;;1 per 4 Regions;2;Legends
-Xiongnu;Tributary;;Attack;;Steal 1 Progress from each other player.;;;;1 per Fame card;4;Legends
-Drama & Poetry;Civilised;Empire;Attack;;Free play. Steal 1 Progress from each other player. Each player MAY discard a card to return an Unrest.;;;;2;4;Legends
-Education;Civilised;Empire;;;Free play. You MAY put a card from your hand into your history. You MAY put a card from your discard pile into your history.;;;;2;2;Legends
-Moneylenders;Civilised;Empire;;;Free play. Pay 3 Materials to gain 1 action.;;;;1 per 10 Materials;2;Legends
-Corruption;Civilised;Empire;Attack;;All players gain 2 Materials. All other players take Unrest. Gain 1 Progress.;;;;2;2;Legends
-Onager;Civilised;Empire;Attack;;Each other player abandons a City. Gain 2 Materials per abandoned City. You MAY acquire Region/Tributary.;;;;2;2;Legends
-Metropolis;Civilised;Empire;Pinned;Metropolis;;;;Solstice: choose: gain 1 Pop OR gain 1 Materials OR draw a card.;2;2;Legends
-Astronomy;Civilised;Empire;Pinned;;;;Exhaust: when you acquire Region, exhaust this card to gain 1 Progress.;Solstice: you MAY return a Region from your discard pile to your hand.;2;2;Legends
-Cartography;Civilised;Empire;Pinned;;;Passive: you can acquire exiled Region/Tributary cards as though they were in the market. Remember that when you acquire an exiled Tributary card, you must take Unrest.;;;2;3;Legends
-Masonry;Civilised;Empire;Pinned;;;Passive: you can free play City and Metropolis card.;;;2 per City/Metropolis in your play area;4;Legends
-Civil Service;Civilised;Empire;Pinned;;;Passive: increase your hand size by 1.;;Solstice: gain 2 Materials.;2;2;Legends
-Exports;Civilised;Empire;Attack;;All players gain 2 Materials. Give each other player a card from your hand or discard pile.;;;;1 per 10 cards;2;Legends
-Cataphract;Civilised;Empire;Attack;Helmet;Each other player abandons a Region. You MAY acquire Region/Tributary. You MAY garrison this card in a Region to trigger that card's play effect.;;;;2;2;Legends
-Urban Development;Civilised;Empire;;;Gain 1 Materials and 1 Pop per City/Metropolis in your play area.;;;;2 per City/Metropolis;2;Legends
-Mercenaries;Civilised;Empire;;;Free play. Pay 1 Pop to gain 1 action.;;;;1 per 4 Pop;3;Legends
-Amphitheatre;Civilised;Empire;Pinned;;;;Exhaust: return an Unrest from your discard pile to gain 1 Progress.;Solstice: discard a card.;1 per 5 Progress;2;Legends
+Name;Type;Icon 1;Icon 2;Icon 3;Icon 4;Play Effect;Passive Effect;Exhaust Effect;Solstice Effect;VP;Player Count;Set
+Standing Army;Uncivilised;;Pinned;;;;Passive: when another player plays an Attack, ignore the effects unless they give you 1 Progress.;;;1;4;Classics
+Jade Mask;Uncivilised;;;Mask;;Draw up to 3 cards if able. Then return a card to the top of your deck.;;;;1 if in history;2;Classics
+Elders;Uncivilised;;;;;Choose: acquire Uncivilised OR break through for Civilised and all other players gain 1 Progress.;;;;1;2;Classics
+Town;Uncivilised;Barbarian;Pinned;;;;;Exhaust: all players MAY gain 2 Materials.;Solstice: you MAY gain 2 Progress. If you do, choose: abandon this card OR put it into your history.;2 if in history;2;Classics
+Town;Uncivilised;Barbarian;Pinned;;;;;"Exhaust: all players MAY gain 2 Materials. ";Solstice: you MAY gain 2 Progress. If you do, choose: abandon this card OR put it into your history.;2 if in history;2;Classics
+Shrine;Uncivilised;Barbarian;Pinned;;;;;Exhaust: pay 1 Materials to draw a card.;Solstice: you MAY discard a card to return an Unrest from your discard pile.;1;2;Classics
+Invasion;Uncivilised;;Attack;;;Pay 3 Materials. All other players take Unrest. Choose: break through for Tributary OR break through for Region and each other player recalls a Region.;;;;1;2;Classics
+Musticism;Uncivilised;;Pinned;;;;;Exhaust: gain 1 action. Solstice: choose: take Unrest OR discard 2 cards.;;1;2;Classics
+Oracle;Uncivilised;Barbarian;;;;Free play. Draw 2 cards and discard one of them.;;;;2 per Fame card;2;Classics
+Agriculture;Uncivilised;;Pinned;;;;;Exhaust: treat 1 Grain as 3 Trade for the rest of the turn.;;2 per Grain;2;Classics
+Boats;Uncivilised;;Pinned;;;;;Exhaust: choose: recall a Water to gain 2 Materials and 1 Pop OR recall a Grain to gain 1 action.;;1 per Grain/Water;2;Classics
+Leadership;Uncivilised/Civilised;;;;;Free play. Choose: draw a card OR put a card from your hand or discard pile into your history.;;;;1;1;Classics
+Shaduf;Uncivilised;;Pinned;;;;;Exhaust: when you gain Materials from a Water in play, exhaust this card to gain 1 Progress.;;2 per Water;2;Classics
+Lost Scroll;Uncivilised/Civilised;;;;;Free play. You MAY return a card from your discard pile to the top of your deck. All players MAY draw a card.;;;;1 if in history;3;Classics
+Rituals & Ceremonies;Uncivilised;Barbarian;;;;Free play. Choose: return an Unrest OR gain 1 Progress and you MAY return an Exhausted to your state card.;;;;1;3;Classics
+Ambassador;Uncivilised/Civilised;;;;;;;Exhaust: resolve the exhaust keyword on an opponent's Pinned card as though it were your own.;;1;3;Classics
+City;Uncivilised/Civilised;;Pinned;City;;;;;Solstice: you MAY discard a card to choose: gain 1 Pop OR gain 1 Materials OR draw a card.;1;2;Classics
+City;Uncivilised/Civilised;;Pinned;City;;;;;Solstice: you MAY discard a card to choose: gain 1 Pop OR gain 1 Materials OR draw a card.;1;2;Classics
+City;Uncivilised/Civilised;;Pinned;City;;;;;Solstice: you MAY discard a card to choose: gain 1 Pop OR gain 1 Materials OR draw a card.;1;2;Classics
+Gambling;Uncivilised/Civilised;;;;;Free play. Pay 1 Materials and declare one of the following: Uncivilised, Civilised, Region or Tributary. Reveal the top card of the main deck. If it matches the declared type, add it to your hand. Otherwise, exile it.;;;;1;2;Classics
+Port;Uncivilised/Civilised;;Pinned;;;;;Exhaust: gain 1 Materials per Water in your play area. You MAY pay 3 Materials to draw a card of your choice from your discard pile.;;1;2;Classics
+Diplomacy;Uncivilised/Civilised;;;;;Pay 3 Materials to break through for Tributary.;;;;1;2;Classics
+Wilderness;Region;;Pinned;;;Exile a card from the Market. You MAY garrison a card. Passive: you MAY recall this card to avoid the effect of an Attack.;;;;1;3;Classics
+Jungle;Region;;Pinned;;;Gain 1 Pop. Exile a card from the market. You MAY garrison a card.;;;;1;2;Classics
+Mountain;Region;;Pinned;;;Gain 3 Materials. Exile a card from the market. You MAY garrison a card.;;;;1;2;Classics
+Coast;Region;;Pinned;Trade, Grain;;Draw a card. Exile a card from the market. You MAY garrison a card.;;;;0;2;Classics
+Floodplain;Region;;Pinned;Trade, Water;;You MAY put a card from your discard pile into your history. Exile a card from the market. You MAY garrison a card.;;;;0;2;Classics
+Forest;Region;;Pinned;Trade, Trade, Grain;;Exile a card from the market. You MAY garrison a card.;;;;0;2;Classics
+Oasis;Region;;Pinned;Trade, Trade, Water;;Exile a card from the market. You MAY garrison a card.;;;;0;2;Classics
+Hills;Region;;Pinned;Trade, Grain;;Gain 1 Pop. Exile a card from the market. You MAY garrison a card.;;;;0;2;Classics
+Marsh;Region;;Pinned;Trade, Water;;Gain 2 Materials. Exile a card from the market. You MAY garrison a card.;;;;0;2;Classics
+Steppe;Region;;Pinned;Trade, Trade, Grain;;Exile a card from the market. You MAY garrison a card.;;;;0;2;Classics
+River;Region;;Pinned;Trade, Trade, Water;;You MAY put a card from your discard pile into your history. Exile a card from the market. You MAY garrison a card.;;;;0;2;Classics
+Cape;Region;;Pinned;Trade, Water;;"Exile a card from the Market. You MAY garrison a card. ";Passive: you MAY recall this card to avoid the effect of an Attack.;;;0;2;Classics
+Woodland;Region;;Pinned;Trade, Grain;;You MAY draw a card of your choice from your discard pile and place it on top of your draw deck. Exile a card from the Market. You MAY garrison a card.;;;;0;2;Classics
+Sacred Pass;Region;Barbarian;Pinned;;;;;Exhaust: you MAY look at the top card of your nation deck. You MAY then abandon this card to swap a card from your hand with the top card of your nation deck.;;1;2;Classics
+Armenians;Tributary;;;;;Acquire Uncilised. Put this card into your history.;;;;3;2;Classics
+Assyrians;Tributary;;;;;Free play. Gain 1 Pop;;;;3;2;Classics
+Egyptians;Tributary;;;;;If Barbarian, put the top card of your nation deck into your dicard pile. If Empire, develop. Put this card into your history.;;;;1 per Civilised;2;Classics
+Ionians;Tributary;;;;;Free play. Return up to 2 Unrest from your hand or discard pile. Put this card into your history.;;;;3;2;Classics
+Qin;Tributary;;;;;;Passive: increase your hand size by 1.;;;1 per 3 Pinned cards in play, exluding Regions;2;Classics
+Olmecs;Tributary;;;;;Free play. Return an Exhaust to your state card.;;;;3;3;Classics
+Sumerians;Tributary;;;;;Cannot be played. Return up to 2 Unrest before scoring.;;;;3;2;Classics
+Askumites;Tributary;;;;;Gain 4 Materials.;;;;1 per Tributary;2;Classics
+Minoans;Tributary;Barbarian;;;;Free play. Place a card on top of your deck and gain 2 Progress.;;;;1 per 4 Progress;2;Classics
+Mauryans;Tributary;;Pinned;;;;;;Solstice: choose: gain 2 Materials OR return a Region from your discard pile to your hand.;1 per 2 cards in history;4;Classics
+Hittites;Tributary;;;;;Break through for Region. Put this card into your history.;;;;3;2;Classics
+Drama & Poetry;Civilised;Empire;Attack;;;Free play. Steal 1 Progress from each other player. Each player MAY discard a card to return an Unrest.;;;;2;4;Classics
+Education;Civilised;Empire;;;;Free play. You MAY put a card from your hand into your history. You MAY put a card from your discard pile into your history.;;;;2;2;Classics
+Moneylenders;Civilised;Empire;;;;Free play. Pay 3 Materials to gain 1 action.;;;;1 per 10 Materials;2;Classics
+Corruption;Civilised;Empire;Attack;;;All players gain 2 Materials. All other players take Unrest. Gain 1 Progress.;;;;2;2;Classics
+Onager;Civilised;Empire;Attack;;;Each other player abandons a City. Gain 2 Materials per abandoned City. You MAY acquire Region/Tributary.;;;;2;2;Classics
+Temple;Civilised;Empire;Pinned;;;;;"Exhaust: discard a card to gain 1 Progress. ";Solstice: return an Unrest from your discard pile.;1 per 5 Progress;2;Classics
+Cataphract;Civilised;Empire;Attack;Helmet;;Each other player abandons a Region. You MAY acquire Region/Tributary. You MAY garrison this card in a Region to trigger that card's play effect.;;;;2;2;Classics
+Metropolis;Civilised;Empire;Pinned;Metropolis;;;;;Solstice: choose: gain 1 Pop OR gain 1 Materials OR draw a card.;2;2;Classics
+Metropolis;Civilised;Empire;Pinned;Metropolis;;;;;Solstice: choose: gain 1 Pop OR gain 1 Materials OR draw a card.;2;2;Classics
+Pharmacy;Civilised;Empire;Pinned;;;;;;Solstice: choose: gain 1 Pop OR pay 2 Pop to gain 1 Progress.;2;2;Classics
+Wonder;Civilised;Empire;Pinned;;;;;Exhaust: when you return an Unrest, exhaust this card to gain 2 Progress.;;2;3;Classics
+Coinage;Civilised;Empire;Pinned;;;;;Exhaust: draw a card. Solstice: gain 2 Materials.;;2;2;Classics
+Exports;Civilised;Empire;Attack;;;All players gain 2 Materials. Give each other player a card from your hand or discard pile.;;;;1 per 10 cards;2;Classics
+Urban Development;Civilised;Empire;;;;Gain 1 Materials and 1 Pop per City/Metropolis in your play area.;;;;2 per City/Metropolis;2;Classics
+Mercenaries;Civilised;Empire;;;;Free play. Pay 1 Pop to gain 1 action.;;;;1 per 4 Pop;3;Classics
+Mining;Uncivilised;;Pinned;;;;;Exhaust: abandon a Region to gain 1 Progress. If the abandoned card has no Trade, gain an additional Progress.;;1;4;Legends
+Jade Mask;Uncivilised;;;Mask;;Draw up to 3 cards if able. Then return a card to the top of your deck.;;;;1 if in history;2;Legends
+Elders;Uncivilised;;;;;Choose: acquire Uncivilised OR break through for Civilised and all other players gain 1 Progress.;;;;1;2;Legends
+Espionage;Uncivilised;;Attack;;;Place a card on the top of your draw deck to acquire Uncivilised/Civilised/Region/Tributary. Each other player recalls a Pinned card.;;;;1;2;Legends
+Invasion;Uncivilised;;Attack;;;Pay 3 Materials. All other players take Unrest. Choose: break through for Tributary OR break through for Region and each other player recalls a Region.;;;;1;2;Legends
+Monument;Uncivilised;Barbarian;Pinned;;;;;Exhaust: free play an Unrest.;;1;2;Legends
+Code of Laws;Uncivilised;;Pinned;;;;;Exhaust: draw a card.;;1;2;Legends
+Religion;Uncivilised;;Pinned;;;;;Exhaust: gain 1 action.;Solstice: choose: take Unrest or pay 3 Materials.;1;2;Legends
+Oracle;Uncivilised;Barbarian;;;;Free play. Draw 2 cards and discard one of them.;;;;2 per Fame card;2;Legends
+Domestication;Uncivilised;;Pinned;;;;;Exhaust: when you gain Materials from a Grain in play, exhaust this card to gain 1 Progress.;;2 per Grain;2;Legends
+Water Mill;Uncivilised;;Pinned;;;;;Exhaust: choose: recall a Grain to gain 2 Materials and 1 Pop OR recall a Water to gain 1 action.;;1 per Grain/Water;2;Legends
+Qanat;Uncivilised;;Pinned;;;;;Exhaust: treat 1 Water as 3 Trade for the rest of the turn.;;2 per Water;2;Legends
+Rituals & Ceremonies;Uncivilised;Barbarian;;;;Free play. Choose: return an Unrest OR gain 1 Progress and you MAY return an Exhausted to your state card.;;;;1;3;Legends
+City;Uncivilised/Civilised;;Pinned;City;;;;;Solstice: you MAY discard a card to choose: gain 1 Pop OR gain 1 Materials OR draw a card.;1;2;Legends
+City;Uncivilised/Civilised;;Pinned;City;;;;;Solstice: you MAY discard a card to choose: gain 1 Pop OR gain 1 Materials OR draw a card.;1;2;Legends
+City;Uncivilised/Civilised;;Pinned;City;;;;;Solstice: you MAY discard a card to choose: gain 1 Pop OR gain 1 Materials OR draw a card.;1;2;Legends
+City;Uncivilised/Civilised;;Pinned;City;;;;;Solstice: you MAY discard a card to choose: gain 1 Pop OR gain 1 Materials OR draw a card.;1;3;Legends
+Road Building;Uncivilised/Civilised;;Pinned;;;;Passive: your Conquer cards lose the Barbarian icon.;;Solstice: gain 2 Materials.;1;2;Legends
+Art;Uncivilised/Civilised;;Pinned;;;;;;Solstice: If Barbarian, you MAY pay 1 Materials to return an Unrest. If Empire, you MAY pay 3 Materials to gain 1 Progress.;1;2;Legends
+Diplomacy;Uncivilised/Civilised;;;;;Pay 3 Materials to break through for Tributary.;;;;1;2;Legends
+Leadership;Uncivilised/Civilised;;;;;Free play. Choose: draw a card OR put a card from your hand or discard pile into your history.;;;;1;1;Legends
+Lost Scroll;Uncivilised/Civilised;;;Scroll;;Free play. You MAY return a card from your discard pile to the top of your deck. All players MAY draw a card.;;;;1 if in history;3;Legends
+Fortunate Isle;Region;Barbarian;;;;Acquire Uncivilised/Civilised/Region/Tributary. Exile this card.;;;;2;2;Legends
+Rainforest;Region;;Pinned;Trade, Grain;;Gain 1 Pop. Exile a card from the market. You MAY garrison a card.;;;;;2;Legends
+Mountain;Region;;Pinned;Trade;;Gain 2 Materials. Exile a card from the market. You MAY garrison a card.;;;;;2;Legends
+Peninsula;Region;;Pinned;Trade, Trade, Water;;Draw 2 cards. Exile a card from the market. You MAY garrison a card.;;;;;2;Legends
+Lakes;Region;;Pinned;Trade, Water, Water;;You MAY put a card from your discard pile into your history. Exile a card from the market. You MAY garrison a card.;;;;;2;Legends
+Highlands;Region;;Pinned;Trade;;Exile a card from the market. You MAY garrison a card.;;;Solstice: gain 2 Pop and discard a card.;;2;Legends
+Sacred Grove;Region;;;;;Gain 1 Progress. You MAY put a card from your hand into your history. Put this card into your history.;;;;2 per player with fewer Progress than you;3;Legends
+Lowlands;Region;;Pinned;Trade;;Exile a card from the market. You MAY garrison a card.;;;Solstice: gain 3 Materials and discard a card.;;2;Legends
+Moor;Region;;Pinned;Trade, Water;;You MAY return a card of your choice from your discard pile to the top of your draw deck. Exile a card from the market. You MAY garrison a card.;;;;;2;Legends
+Plain;Region;;Pinned;Trade, Trade, Grain;;Gain 1 Progress. Exile a card from the market. You MAY garrison a card.;;;;;2;Legends
+Archipelago;Region;;Pinned;Trade, Grain, Water;;You MAY put a card from your discard pile into your history. Exile a card from the market. You MAY garrison a card.;;;;;2;Legends
+Fortified Region;Region;;Pinned;;;Exile a card from the market. You MAY garrison a card.;;Exhaust: when another player plays an Attack, you MAY exhaust this card and pay 1 Pop to avoid its effects (even if it's another player's turn).;;1;2;Legends
+Grassland;Region;;Pinned;Trade, Grain;;Exile a card from the market. You MAY garrison a card.;;;Solstice: draw a card and discard a card.;;2;Legends
+Island;Region;;Pinned;Trade, Grain, Water;;Draw a card. Exile a card from the market. You MAY garrison a card.;;;;;2;Legends
+Etruscans;Tributary;Barbarian;;;;Gain 2 Progress;;;;3;2;Legends
+Scythians;Tributary;;Pinned;;;;;Exhaust: when another player plays an Attack, you MAY exhaust this card to avoid its effects (even if it's another player's turn).;;3;2;Legends
+Vikings;Tributary;Empire;Attack;;;Gain 2 Materials. Steal 2 Materials from each other player. Anyone unable to pay takes Unrest.;;;;1 per 2 Uncivilised;2;Legends
+Phoenicians;Tributary;;;;;Acquire Civilised. Put this card into your history.;;;;3;2;Legends
+Romans;Tributary;;;;;Abandon a Region to draw the top Fame card. Exile this card. All other players gain 1 Progress.;;;;3;3;Legends
+Greeks;Tributary;Empire;Pinned;Metropolis;;;;;Solstice: choose: gain 1 Pop OR gain 1 Materials OR draw a card.;1 per 10 cards;2;Legends
+Carthaginians;Tributary;;Attack;;;Gain 2 Materials and draw a card. Give each other player a card from your hand or discard pile.;;;;1 per 10 Materials;2;Legends
+Persians;Tributary;;;;;Gain 2 Pop to break through for Tributary. Put this card into your history.;;;;1 per Tributary;2;Legends
+Celts;Tributary;;Attack;;;Break through for Uncivilised. Each other player takes Unrest.;;;;3;2;Legends
+Macedonians;Tributary;;;;;Acquire Region twice (including from Exiled cards). Put this card into your history.;;;;1 per 4 Regions;2;Legends
+Xiongnu;Tributary;;Attack;;;Steal 1 Progress from each other player.;;;;1 per Fame card;4;Legends
+Drama & Poetry;Civilised;Empire;Attack;;;Free play. Steal 1 Progress from each other player. Each player MAY discard a card to return an Unrest.;;;;2;4;Legends
+Education;Civilised;Empire;;;;Free play. You MAY put a card from your hand into your history. You MAY put a card from your discard pile into your history.;;;;2;2;Legends
+Moneylenders;Civilised;Empire;;;;Free play. Pay 3 Materials to gain 1 action.;;;;1 per 10 Materials;2;Legends
+Corruption;Civilised;Empire;Attack;;;All players gain 2 Materials. All other players take Unrest. Gain 1 Progress.;;;;2;2;Legends
+Onager;Civilised;Empire;Attack;;;Each other player abandons a City. Gain 2 Materials per abandoned City. You MAY acquire Region/Tributary.;;;;2;2;Legends
+Metropolis;Civilised;Empire;Pinned;Metropolis;;;;;Solstice: choose: gain 1 Pop OR gain 1 Materials OR draw a card.;2;2;Legends
+Astronomy;Civilised;Empire;Pinned;;;;;Exhaust: when you acquire Region, exhaust this card to gain 1 Progress.;Solstice: you MAY return a Region from your discard pile to your hand.;2;2;Legends
+Cartography;Civilised;Empire;Pinned;;;;Passive: you can acquire exiled Region/Tributary cards as though they were in the market. Remember that when you acquire an exiled Tributary card, you must take Unrest.;;;2;3;Legends
+Masonry;Civilised;Empire;Pinned;;;;Passive: you can free play City and Metropolis card.;;;2 per City/Metropolis in your play area;4;Legends
+Civil Service;Civilised;Empire;Pinned;;;;Passive: increase your hand size by 1.;;Solstice: gain 2 Materials.;2;2;Legends
+Exports;Civilised;Empire;Attack;;;All players gain 2 Materials. Give each other player a card from your hand or discard pile.;;;;1 per 10 cards;2;Legends
+Cataphract;Civilised;Empire;Attack;Helmet;;Each other player abandons a Region. You MAY acquire Region/Tributary. You MAY garrison this card in a Region to trigger that card's play effect.;;;;2;2;Legends
+Urban Development;Civilised;Empire;;;;Gain 1 Materials and 1 Pop per City/Metropolis in your play area.;;;;2 per City/Metropolis;2;Legends
+Mercenaries;Civilised;Empire;;;;Free play. Pay 1 Pop to gain 1 action.;;;;1 per 4 Pop;3;Legends
+Amphitheatre;Civilised;Empire;Pinned;;;;;Exhaust: return an Unrest from your discard pile to gain 1 Progress.;Solstice: discard a card.;1 per 5 Progress;2;Legends

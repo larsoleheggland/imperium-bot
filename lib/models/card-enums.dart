@@ -15,6 +15,8 @@ enum CardType {
   common,
   undefined,
   fame,
+  fameA,
+  fameB,
 }
 
 enum CardIcon {

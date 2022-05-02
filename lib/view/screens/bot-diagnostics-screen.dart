@@ -22,16 +22,18 @@ class _BotDiagnosticsState extends State<BotDiagnosticsScreen> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
-          child: Column(
-            children: [
-              _generateBotInfo(),
-              _generateBotLog(),
-              ElevatedButton(
-                  onPressed: () {
-                    setState(() {});
-                  },
-                  child: Text("Update"))
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                _generateBotInfo(),
+                _generateBotLog(),
+                ElevatedButton(
+                    onPressed: () {
+                      setState(() {});
+                    },
+                    child: Text("Update"))
+              ],
+            ),
           ),
         ),
       ),
@@ -82,7 +84,11 @@ class _BotDiagnosticsState extends State<BotDiagnosticsScreen> {
         child: new Column(
           children: [
             Text("Material tokens: " + botCubit.bot.materialTokens.toString()),
-            Text("Material tokens: " + botCubit.bot.materialTokens.toString()),
+            Text("population tokens: " +
+                botCubit.bot.populationTokens.toString()),
+            Text(
+                "progress tokens: " + botCubit.bot.populationTokens.toString()),
+            Divider(height: 10, color: Colors.white54),
             Text("Cards in draw pile: " +
                 botCubit.bot.drawPile.cardCount().toString()),
             Text("Cards in discard pile: " +
@@ -95,6 +101,7 @@ class _BotDiagnosticsState extends State<BotDiagnosticsScreen> {
                 botCubit.bot.historyDeck.cardCount().toString()),
             Text("Pinned cards: " + botCubit.bot.pinnedCards.length.toString()),
             Text("Regions: " + botCubit.bot.getPinnedRegionCount().toString()),
+            Divider(height: 10, color: Colors.white54),
             Text("Stage: " + botCubit.bot.stage.toShortString()),
             Text("Score: " + botCubit.bot.getScore().toString()),
           ],

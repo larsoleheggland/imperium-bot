@@ -27,7 +27,7 @@ class CarthaginiansBot extends Bot {
       progressTokens++;
     }
 
-    botCubit.alertAddUnrestCard();
+    botCubit.alertTakeUnrest();
 
     return true;
   }
@@ -46,7 +46,7 @@ class CarthaginiansBot extends Bot {
 
     if (card.hasIcon(CardIcon.unrest)) {
       log("Resolves unrest action: alerts user to put an unrest card in pile, and removes card from bots deck");
-      await botCubit.alertAddUnrestCard();
+      await botCubit.alertTakeUnrest();
       cardsToBeRemovedFromPlayDeck.add(card);
       return true;
     } else {
@@ -251,7 +251,7 @@ class CarthaginiansBot extends Bot {
 
   @override
   Future<bool> addTokensToCard() async {
-    await botCubit.requireUserAction("Add tokens to card",
+    await botCubit.requireUserAction("Bot cleanup",
         Text("Add 2 material tokens to card in place " + diceRoll.toString()));
 
     return true;

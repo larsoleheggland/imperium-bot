@@ -215,6 +215,7 @@ class Bot {
     drawPile.addCard(card.card as GameCard);
 
     if (card.takeUnrest) {
+      drawPile.addCard(CardDatabase.basicUnrestCard);
       log("Bot takes unrest, for acquiring card " + card.card!.name);
     }
 

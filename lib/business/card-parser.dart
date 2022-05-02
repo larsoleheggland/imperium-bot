@@ -55,7 +55,8 @@ class CardParser {
             split[8],
             split[9],
             split[10],
-            split[11]));
+            split[11],
+            split[12]));
       } catch (e) {
         var debug = index;
       }

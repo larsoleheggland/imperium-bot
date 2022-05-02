@@ -22,6 +22,7 @@ class GameCard {
     String iconsString1,
     String iconsString2,
     String iconsString3,
+    String iconsString4,
     this.playEffect,
     this.passiveEffect,
     this.exhaustEffect,
@@ -34,8 +35,13 @@ class GameCard {
       type = _parseType(typeString);
       playerCount = _parsePlayerCount(playerCountString);
       victoryPoints = _parseVictoryPoints(victoryPointsText);
-      icons =
-          _parseIcons(iconsString1 + "," + iconsString2 + "," + iconsString3);
+      icons = _parseIcons(iconsString1 +
+          "," +
+          iconsString2 +
+          "," +
+          iconsString3 +
+          "," +
+          iconsString4);
       var debut = true;
     } catch (e) {
       debugPrint(e.toString());
@@ -152,6 +158,10 @@ class GameCard {
         return CardType.development;
       case "fame":
         return CardType.fame;
+      case "fame a":
+        return CardType.fameA;
+      case "fame b":
+        return CardType.fameB;
     }
 
     debugPrint("Undefined card type: " + type);

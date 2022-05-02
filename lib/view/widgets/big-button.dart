@@ -23,8 +23,11 @@ class BigButton extends StatelessWidget {
         onPressed: () {
           onPressed();
         },
-        child: Text(buttonText,
-            style: const TextStyle(color: Colors.white, fontSize: 20)),
+        child: Align(
+          alignment: Alignment.center,
+          child: Text(buttonText,
+              style: const TextStyle(color: Colors.white, fontSize: 20)),
+        ),
       ),
     );
   }

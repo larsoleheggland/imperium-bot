@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:imperium_bot/business/bot/bot.dart';
 import 'package:imperium_bot/business/bot/factions/carthaginians-bot.dart';
+import 'package:imperium_bot/data/card-database.dart';
 import 'package:imperium_bot/models/card-enums.dart';
 import 'package:imperium_bot/models/card.dart';
 
@@ -58,6 +59,13 @@ class BotCubit extends Cubit<BotState> {
     return await requireUserAction("Attack", userDirections);
   }
 
+  Future<bool> alertAddUnrest() async {
+    var userDirections = const Text(
+        "Bot played an unrest card. Add one of bots unrest cards to unrest pile");
+
+    return await requireUserAction("Bot played unrest", userDirections);
+  }
+
   Future<bool> alertUserMayDrawCard() async {
     var userDirections = const Text("You may draw a card");
 
@@ -66,6 +74,13 @@ class BotCubit extends Cubit<BotState> {
 
   Future<bool> alertCustom(String title, Widget userDirections) async {
     return await requireUserAction(title, userDirections);
+  }
+
+  Future<bool> addUnrestAndAlertUser() async {
+    var userDirections = const Text(
+        "Bot got one unrest card. Remove unrest card from unrest pile, and set aside.");
+    bot.drawPile.addCard(CardDatabase.basicUnrestCard);
+    return await requireUserAction("Remove unrest", userDirections);
   }
 
   void selectUserCard(PlayerSelectedCard card) {

@@ -46,7 +46,7 @@ class CarthaginiansBot extends Bot {
 
     if (card.hasIcon(CardIcon.unrest)) {
       log("Resolves unrest action: alerts user to put an unrest card in pile, and removes card from bots deck");
-      await botCubit.alertTakeUnrest();
+      await botCubit.alertAddUnrest();
       cardsToBeRemovedFromPlayDeck.add(card);
       return true;
     } else {

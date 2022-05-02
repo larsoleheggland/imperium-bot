@@ -70,7 +70,10 @@ class Bot {
       index++;
     }
 
-    addTokensToCard();
+    if (diceRoll != 6) {
+      addTokensToCard();
+    }
+
     cleanUp();
   }
 

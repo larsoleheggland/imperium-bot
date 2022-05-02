@@ -164,6 +164,9 @@ class _AppState extends State<App> {
           BigButton("Take bot turn", CustomColors.red, botCubit.takeBotTurn),
           SizedBox(height: 10),
           Row(
+            //addUnrestAndAlertUser()
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
                   child: BigButton("Draw card", Colors.black87, _botDrawCard)),
@@ -173,6 +176,18 @@ class _AppState extends State<App> {
                       "Abandon region", Colors.black87, _botAbandonRegion)),
             ],
           ),
+          SizedBox(height: 10),
+          Row(
+            //addUnrestAndAlertUser()
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                  child: BigButton("Give unrest", Colors.black87,
+                      botCubit.addUnrestAndAlertUser)),
+            ],
+          ),
+          SizedBox(height: 30),
           ElevatedButton(
               onPressed: () {
                 setState(() {

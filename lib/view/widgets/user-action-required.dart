@@ -27,6 +27,7 @@ class _RequiredUserActionState extends State<RequiredUserAction> {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
+        automaticallyImplyLeading: false,
       ),
       backgroundColor: Colors.black26,
       body: Padding(

@@ -4,9 +4,9 @@ const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "assets/AssetManifest.json": "0a4c113a93e344c4ac5008ae79ecb05d",
-"assets/assets/csv/commons/commons.csv": "1b046a2374ac9ee268e3fba62379bd75",
-"assets/assets/csv/commons/fame.csv": "0e61c66b7ffd128f4fe9ebdb1788405f",
-"assets/assets/csv/factions/carthaginians.csv": "5fbc5809743065f755632d16353a7cd3",
+"assets/assets/csv/commons/commons.csv": "7ea8742b389564f9c7d4fd8da87b1aba",
+"assets/assets/csv/commons/fame.csv": "5082477c2f1ea9947d32e1d2406fcaad",
+"assets/assets/csv/factions/carthaginians.csv": "e97de49254ea6f21fa92e6203696f99d",
 "assets/assets/csv/factions/celts.csv": "b907023c2071f6b2813f0d55dfb84a63",
 "assets/assets/images/background.png": "028bfd30e0a5eb14c6d532b26d613617",
 "assets/FontManifest.json": "5a32d4310a6f5d9a6b651e75ba0d7372",
@@ -27,9 +27,9 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "1c7e444b087aba97b3dab8afdc72bd01",
-"/": "1c7e444b087aba97b3dab8afdc72bd01",
-"main.dart.js": "83b2738cedaa4fc3162940df67f51975",
+"index.html": "1ee9491361768ea90c3775767cb5dd14",
+"/": "1ee9491361768ea90c3775767cb5dd14",
+"main.dart.js": "4698915b6db2d19776d3b76bfc9bfc1a",
 "manifest.json": "addae12123fcf874600cd1bcfb8af5d4",
 "version.json": "dd289c07368e6092d42f8bd3778108b8"
 };

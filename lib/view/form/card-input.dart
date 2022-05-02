@@ -49,6 +49,7 @@ class _CardFormInputState extends State<CardFormInput> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Bot requires card'),
+        automaticallyImplyLeading: false,
       ),
       backgroundColor: Colors.black54,
       body: Padding(

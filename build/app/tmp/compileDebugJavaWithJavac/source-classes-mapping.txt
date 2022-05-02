@@ -1,0 +1,4 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+no/losh/imperium_bot/BuildConfig.java
+ no.losh.imperium_bot.BuildConfig

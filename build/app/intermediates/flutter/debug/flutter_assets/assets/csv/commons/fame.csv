@@ -1,0 +1,19 @@
+Name;Type;Icon 1;Icon 2;Icon 3;Effect;VP;Set
+King of Kings;Fame A;Fame;;;When you would gain this card, instead resolve it. Then flip this card. THIS TRIGGERS GAME END. If Barbarian, gain 6 Progress. If Empire, gain 3 Progress and develop for free.;;Both
+King of Kings;Fame B;Fame;;;When you would gain this card, instead resolve it. Then flip this card. Multiple players can resolve this card. If Barbarian, gain 4 Progress. If Empire, develop for free.;;Both
+Praiseworthy;Fame;Fame;;;Choose: put this card into your history OR break through for Uncivilised/Civilised/Region/Tributary.;7 if in history, 3 otherwise;Classics
+Great;Fame;Fame;;;Free play. Gain 1 action. You MAY put this card into your history.;6 if in history, 2 otherwise;Classics
+Notorious;Fame;Fame;Attack;;Free play. Steal 1 Progress from each other player. Anyone unable to pay takes Unrest.;1 per Unrest scored by other players;Classics
+Marvellous;Fame;Fame;;;Free play. Draw the top card of your deck if able and choose: discard it OR return it to the top OR put it into your history.;9;Classics
+Glorious;Fame;Fame;;;Free play. If Barbarian, draw up to 4 cards. If Empire, develop at no cost. Put this card into your history.;6;Classics
+Triumphant;Fame;Fame;;;Cannot be played. Cannot be garrisoned.;11;Classics
+Triumphant;Fame;Fame;;;Cannot be played. Cannot be garrisoned.;11;Classics
+Awe-Inspiring;Fame;Fame;Pinned;;Passive: Increase your hand size by 1.;7;Classics
+Imperial;Fame;Fame;;;Choose: break through for Uncivilised/Civilised/Region/Tributary (you MAY chose an exiled card) OR put this card into your history.;8 if in history, 2 otherwise;Legends
+Independent;Fame;Fame;;;Free play. Gain 3 Materials and 2 Pop.;3;Legends
+Magnificent;Fame;Fame;;;Free play. Draw a card. You MAY return an Unrest.;5;Legends
+Outstanding;Fame;Fame;;;Free play. Put up to 2 cards from your discard pile into your history.;7;Legends
+Proud;Fame;Fame;;;Cannot be played.;12 if garrisoned, 8 if in history, 3 otherwise;Legends
+Proud;Fame;Fame;;;Cannot be played.;12 if garrisoned, 8 if in history, 3 otherwise;Legends
+Eminent;Fame;Fame;;;Free play. Draw 2 cards.;8;Legends
+Acclaimed;Fame;Fame;;;Break through for a * card. Put this card into your history.;1 per * card (including this one);Legends

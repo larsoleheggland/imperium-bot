@@ -1,0 +1,30 @@
+Name;Type;Icon 1;Icon 2;Icon 3;Icon 4;Play Effect;Passive Effect;Exhaust Effect;Solstice Effect;VP;Cost
+Celts;Power A;;Power;;;;;Exhaust: when you acquire Uncivilised or break through for Uncivlised, exhaust this card. Each other player takes Unrest.;;1 per Uncivilised;
+Celts;Power B;;Power;;;;;;;2 per Uncivilised;
+Celtic Gold;Accession;;;;;Each other player gains 1 Materials. Gain 4 Materials per Grain in your play area.;;;;;
+Celtic Innovation;Development;Empire;;Attack;;You MAY acquire Uncivilised/Civilised. Each other player takes Unrest.;;;;4;2 Materials, 2 Pop
+Chainmail;Development;Empire;;Pinned;;;Passive: when you play an Attack, gain 1 Progress.;;;4;3 Materials, 1 Pop
+Chariots;Development;Empire;;Pinned;;;Passive: you may acquire exiled Regions. Your Conquer and Attack cards lose the Barbarian icon.;;;4;3 Pop
+Ogham Script;Development;Empire;;Pinned;;;Passive: increase your hand size by 1. Exhaust: you MAY put a card from your hand into your history. You MAY put a card from your discard pile into your history.;;;4;2 Materials, 2 Pop
+Vercingetorix;Development;Empire;;;;You MAY acquire Uncivilised/Civilised. Put this card into your history.;;;;1 per Uncivilised;4 Materials, 1 Pop
+Armorica;Nation;;Region;Pinned;Trade, Water;You MAY garrison a card.;;;;;
+Belgica;Nation;;Region;Pinned;Water;You MAY draw a card. You MAY garrison a card.;;;;;
+Britannia;Nation;;Region;Pinned;Trade, Grain;You MAY garrison a card.;;;;;
+Hibernia;Nation;;Region;Pinned;Grain;You MAY draw a card from your discard pile. You MAY garrison a card.;;;;;
+Unrest;Nation;;Unrest;;;Choose: Pay 1 Pop OR discard 2 cards OR pay 3 Materials. If you do, return this card to the unrest pile.;;;;-2;
+Conquer;Nation;Barbarian;;;;Choose: pay 2 Pop to acquire Region/Tributary OR pay 3 Pop to break through for Region/Tributary.;;;;1 per 5 Materials;7 Materials
+Druids;Start;;;;;Choose: gain 1 Progress OR pay 1 Pop to break through for Uncivilised OR return an Unrest to gain 1 Pop;;;;;
+Glory;Start;;;;;This card cannot be garrisoned. Abandon 3 Region cards to look at the top 2 cards of the Fame deck. Take one of those cards.;;;;;
+Advance;Start;Barbarian;;;;Choose: pay 3 Materials to acquire Uncivilised/Civilised OR pay 5 Materials to break through for Civilised/Uncivilised.;;;;;
+Conquer;Start;Barbarian;;;;Choose: pay 2 Pop to acquire Region/Tributary OR pay 3 Pop to break through for Region/Tributary.;;;;;
+Boudicca;Start;Barbarian;;Attack;;Gain 1 Progress. Each other player abandons a Region. Put this card into your history.;;;;;
+Cattle Raid;Start;Barbarian;;Attack;;Gain 2 Materials. Steal 1 Materials from each player with at least one Region in play. Steal 1 Progress from each Empire player.;;;;;
+Cauldron of Cerridwen;Start;;;Pinned;;;;Exhaust: Pay 1 Progress to gain 2 Materials.;;;
+Celtica;Start;;Region;Pinned;Trade;You MAY place a card of your choice from your discard pile on top of your deck. You MAY garrison a card.;;;;;
+Unrest;Start;;Unrest;;;Choose: Pay 1 Pop OR discard 2 cards OR pay 3 Materials. If you do, return this card to the unrest pile.;;;;-2;
+Unrest;Start;;Unrest;;;Choose: Pay 1 Pop OR discard 2 cards OR pay 3 Materials. If you do, return this card to the unrest pile.;;;;-2;
+Unrest;Supply 3+;;Unrest;;;Choose: Pay 1 Pop OR discard 2 cards OR pay 3 Materials. If you do, return this card to the unrest pile.;;;;-2;
+Unrest;Supply 3+;;Unrest;;;Choose: Pay 1 Pop OR discard 2 cards OR pay 3 Materials. If you do, return this card to the unrest pile.;;;;-2;
+Unrest;Supply 4;;Unrest;;;Choose: Pay 1 Pop OR discard 2 cards OR pay 3 Materials. If you do, return this card to the unrest pile.;;;;-2;
+Unrest;Supply 4;;Unrest;;;Choose: Pay 1 Pop OR discard 2 cards OR pay 3 Materials. If you do, return this card to the unrest pile.;;;;-2;
+Unrest;Supply 4;;Unrest;;;Choose: Pay 1 Pop OR discard 2 cards OR pay 3 Materials. If you do, return this card to the unrest pile.;;;;-2;

@@ -1,0 +1,25 @@
+Name;Type;Icon 1;Icon 2;Icon 3;Icon 4;Play Effect;Passive Effect;Exhaust Effect;Solstice Effect;VP;Cost
+Carthaginians;Power A;;Power;;;;"Passive: when you would place a Progress on a card in the market, instead place a Materials on that card. ";Exhaust: when you gain a card from the market with Materials on it, double the Materials gained.;;1 per 6 Materials;
+Carthaginians;Power B;;Power;;;;Passive: when you would place a Progress on a card in the market, instead place 2 Materials.;;;1 per 3 Materials;
+City of Carthage;Accession;Empire;;Pinned;City;;;;Solstice: you MAY discard a card to choose: gain 1 Materials OR gain 1 Progress OR draw a card.;;
+Elephants;Development;Empire;;Attack;;Each other player abandons a Region. You MAY break through for Region/Tributary. Put this card into your history.;;;;2;3 Pop
+Elephants;Development;Empire;;Attack;;Each other player abandons a Region. You MAY break through for Region/Tributary. Put this card into your history.;;;;2;3 Pop
+Hegemony;Development;Empire;;;;Pay 2 Materials to acquire Uncivilised/Civilised/Region/Tributary. All players MAY draw a card.;;;;2;3 Materials, 1 Pop
+Hannibal;Development;Empire;;;;You MAY acquire Uncivilised/Civilised/Region/Tributary. You MAY draw a card. You MAY draw a card from your history. Put this card into your history.;;;;4;4 Pop
+Trading Ships;Development;Empire;;Pinned;;;;Exhaust: you MAY recall a Water or a Grain to acquire a card in the market that has Materials on it.;;4;4 Materials, 1 Pop
+Monopoly;Development;Empire;;Attack;;Gain 2 Materials and draw a card. Give each other player a card from your hand or discard pile.;;;;1 per 5 Materials;7 Materials
+Prosperity;Nation;;;;;All players MAY draw 1 card. Choose: gain 1 Materials per Trade Icon OR gain 1 Pop per Region you have in play.;;;;;
+Caravans;Nation;;;Pinned;;;;Exhaust: pay 3 Materials and discard a card to acquire a card in the market that has Materials on it.;;;
+Advance;Nation;Barbarian;;;;Choose: pay 3 Materials to acquire Uncivilised/Civilised OR pay 5 Materials to break through for Civilised/Uncivilised.;;;;;
+Iberia;Nation;;Region;Pinned;Trade, Grain;You MAY garrison a card.;;;;;
+Berbers;Nation;;Tributary;;;Gain 2 Pop.;;;;;
+Glory;Start;;;;;This card cannot be garrisoned. Abandon 3 Region cards to look at the top 2 cards of the Fame deck. Take one of those cards.;;;;;
+Prosperity;Start;;;;;All players MAY draw 1 card. Choose: gain 1 Materials per Trade Icon OR gain 1 Pop per Region you have in play.;;;;;
+Advance;Start;Barbarian;;;;Choose: pay 3 Materials to acquire Uncivilised/Civilised OR pay 5 Materials to break through for Civilised/Uncivilised.;;;;;
+Conquer;Start;Barbarian;;;;Choose: pay 2 Pop to acquire Region/Tributary OR pay 3 Pop to break through for Region/Tributary.;;;;;
+Dido, Queen of Carthage;Start;Barbarian;;;;Gain 1 Pop. You MAY acquire Region and free play it immediately. Put this card into your history.;;;;;
+Carthaginian Traders;Start;Barbarian;;;;Free play. Add 1 Materials to a card in the market. You MAY put a card from your hand or discard pile into your history.;;;;;
+Balearic Islands;Start;;Region;Pinned;Trade, Trade, Water;You MAY garrison a card.;;;;;
+Mauretania;Start;;Region;Pinned;Trade;Gain 2 Materials. You MAY garrison a card.;;;;;
+Unrest;Start;;Unrest;;;Choose: Pay 1 Pop OR discard 2 cards OR pay 3 Materials. If you do, return this card to the unrest pile.;;;;-2;
+Unrest;Start;;Unrest;;;Choose: Pay 1 Pop OR discard 2 cards OR pay 3 Materials. If you do, return this card to the unrest pile.;;;;-2;

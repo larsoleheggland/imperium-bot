@@ -155,6 +155,9 @@ class _CardFormInputState extends State<CardFormInput> {
                   "Should take unrest?",
                   style: TextStyle(color: Colors.white),
                 ),
+                side: MaterialStateBorderSide.resolveWith(
+                  (states) => BorderSide(width: 1.0, color: Colors.white),
+                ),
                 value: shouldTakeUnrest,
                 tileColor: Colors.transparent,
                 onChanged: (newValue) {

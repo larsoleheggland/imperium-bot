@@ -6,7 +6,7 @@ class UserMessagesOverlay extends ModalRoute<void> {
   UserMessagesOverlay(this.content);
 
   @override
-  Duration get transitionDuration => const Duration(milliseconds: 500);
+  Duration get transitionDuration => const Duration(milliseconds: 1000);
 
   @override
   bool get opaque => false;

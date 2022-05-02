@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:imperium_bot/blocs/bot-bloc.dart';
 import 'package:imperium_bot/data/card-database.dart';
 import 'package:imperium_bot/theme/custom-colors.dart';
@@ -31,12 +32,14 @@ class MyApp extends StatelessWidget {
       title: 'Imperium bot',
       theme: ThemeData(
         primarySwatch: Colors.red,
-        textTheme: TextTheme(
-          bodyText1: TextStyle(),
-          bodyText2: TextStyle(),
-        ).apply(
-          bodyColor: Colors.white,
-          displayColor: Colors.white,
+        textTheme: GoogleFonts.macondoTextTheme(
+          const TextTheme(
+            bodyText1: TextStyle(fontSize: 21),
+            bodyText2: TextStyle(fontSize: 19),
+          ).apply(
+            bodyColor: Colors.white,
+            displayColor: Colors.white,
+          ),
         ),
       ),
       home: const App(title: 'imperium bot'),

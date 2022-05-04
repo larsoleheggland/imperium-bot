@@ -61936,12 +61936,12 @@ ao(){return new A.Ny(this.c,B.k)}}
 A.Ny.prototype={
 K(a,b){var s=null
 return A.dV(s,new A.bm(B.me,this.VJ(),s),B.t,s,B.w3,s,s,s,s)},
-VJ(){var s,r=this,q=null,p=A.bd("Progress tokens",q,q,q,A.e1(q,q,q,q,q,q,q,q,q,q,q,17,q,q,q,q,!0,q,q,q,q,q,q,q,q),q,q,q),o=r.d,n=A.a(o.y,"bot").e,m=t.S,l=t.p
+VJ(){var s,r=this,q=null,p=A.bd("Progress tokens",q,q,q,A.e1(q,q,q,q,q,q,q,q,q,q,q,16,q,q,q,q,!0,q,q,q,q,q,q,q,q),q,q,q),o=r.d,n=A.a(o.y,"bot").e,m=t.S,l=t.p
 n=A.d2(A.b([p,A.CL(new A.bm(B.P,A.iM(B.cO,B.j,18),q),new A.bm(B.P,A.iM(B.cP,B.j,18),q),20,0,new A.a88(r),1,n,m)],l),B.D,B.H,B.E)
-p=A.bd("Material tokens",q,q,q,A.e1(q,q,q,q,q,q,q,q,q,q,q,17,q,q,q,q,!0,q,q,q,q,q,q,q,q),q,q,q)
+p=A.bd("Material tokens",q,q,q,A.e1(q,q,q,q,q,q,q,q,q,q,q,16,q,q,q,q,!0,q,q,q,q,q,q,q,q),q,q,q)
 s=A.a(o.y,"bot").c
 s=A.d2(A.b([p,A.CL(new A.bm(B.P,A.iM(B.cO,B.j,18),q),new A.bm(B.P,A.iM(B.cP,B.j,18),q),200,0,new A.a89(r),1,s,m)],l),B.D,B.H,B.E)
-p=A.bd("Population tokens",q,q,q,A.e1(q,q,q,q,q,q,q,q,q,q,q,17,q,q,q,q,!0,q,q,q,q,q,q,q,q),q,q,q)
+p=A.bd("Population tokens",q,q,q,A.e1(q,q,q,q,q,q,q,q,q,q,q,16,q,q,q,q,!0,q,q,q,q,q,q,q,q),q,q,q)
 o=A.a(o.y,"bot").d
 return A.d2(A.b([A.jh(A.b([n,new A.pK(q),s,new A.pK(q),A.d2(A.b([p,A.CL(new A.bm(B.P,A.iM(B.cO,B.j,18),q),new A.bm(B.P,A.iM(B.cP,B.j,18),q),200,0,new A.a8a(r),1,o,m)],l),B.D,B.H,B.E)],l),B.D,B.H,B.E)],l),B.D,B.H,B.E)}}
 A.a88.prototype={

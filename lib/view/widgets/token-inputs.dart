@@ -34,7 +34,7 @@ class _TokenInputsState extends State<TokenInputs> {
             //Progress tokens
             Column(
               children: [
-                Text("Progress tokens", style: TextStyle(fontSize: 17)),
+                Text("Progress tokens", style: TextStyle(fontSize: 16)),
                 CustomNumberPicker(
                   value: botCubit.bot.progressTokens,
                   maxValue: 20,
@@ -55,7 +55,7 @@ class _TokenInputsState extends State<TokenInputs> {
             // material tokens
             Column(
               children: [
-                Text("Material tokens", style: TextStyle(fontSize: 17)),
+                Text("Material tokens", style: TextStyle(fontSize: 16)),
                 CustomNumberPicker(
                   value: botCubit.bot.materialTokens,
                   maxValue: 200,
@@ -76,7 +76,7 @@ class _TokenInputsState extends State<TokenInputs> {
 
             Column(
               children: [
-                Text("Population tokens", style: TextStyle(fontSize: 17)),
+                Text("Population tokens", style: TextStyle(fontSize: 16)),
                 CustomNumberPicker(
                   value: botCubit.bot.populationTokens,
                   maxValue: 200,

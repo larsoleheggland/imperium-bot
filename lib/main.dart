@@ -99,22 +99,48 @@ class _AppState extends State<App> {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      if (botCubit.bot.isEndOfGameTriggered)
+                        endOfGameTriggeredMessage(),
                       generateBotButtons(context, state),
                       Divider(height: 20),
                       TokenInputs(),
                       SizedBox(height: 30),
+                      Center(
+                          child: ElevatedButton(
+                              onPressed: () {
+                                botCubit.bot.isEndOfGameTriggered = true;
+                              },
+                              child: Text("Trigger end of game"))),
+                      Divider(height: 50),
                       ElevatedButton(
                           onPressed: () {
                             setState(() {
                               _openBotDiagnostics();
                             });
                           },
+                          style: ElevatedButton.styleFrom(
+                              primary: CustomColors.brown),
                           child: Text("Open bot diagnostics")),
                     ]),
               );
             }),
       ),
     );
+  }
+
+  Widget endOfGameTriggeredMessage() {
+    if (botCubit.bot.hasGameEnded) {
+      return Container();
+    }
+
+    return Container(
+        width: double.infinity,
+        decoration: BoxDecoration(color: Colors.black87),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: const Center(
+              child: Text("Game end has been triggered. Take one more turn.")),
+        ));
   }
 
   _botAbandonRegion() {

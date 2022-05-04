@@ -109,6 +109,7 @@ class _AppState extends State<App> {
                           child: ElevatedButton(
                               onPressed: () {
                                 botCubit.bot.isEndOfGameTriggered = true;
+                                setState(() {});
                               },
                               child: Text("Trigger end of game"))),
                       Divider(height: 50),

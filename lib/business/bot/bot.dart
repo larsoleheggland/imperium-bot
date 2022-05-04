@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -20,10 +21,12 @@ class Bot {
   int populationTokens = 0;
   int progressTokens = 0;
 
-  int diceRoll = 0;
-
   //BotCubit botCubit = BlocSingletons.botCubit;
   Stage stage = Stage.barbarian;
+
+  bool isEndOfGameTriggered = false;
+  bool hasGameEnded = false;
+  int roundsSinceGameEndTriggered = 0;
 
   late BotCubit botCubit;
   late List<GameCard> pinnedCards = [];
@@ -31,7 +34,7 @@ class Bot {
   late CardDeck discardPile;
   late CardDeck dynastyDeck;
   late CardDeck historyDeck;
-  late CardDeck cardsInPlay;
+  late LinkedHashMap<int, GameCard> cardsInPlay;
 
   late List<GameCard> cardsToBeRemovedFromPlayDeck;
 
@@ -45,7 +48,7 @@ class Bot {
     cardsToBeRemovedFromPlayDeck = [];
     historyDeck = CardDeck([], "(Bot) History Deck");
     discardPile = CardDeck([], "(Bot) Discard Pile");
-    cardsInPlay = CardDeck([], "(Bot) Market cards");
+    cardsInPlay = LinkedHashMap<int, GameCard>();
 
     CardDatabase.all.addAll(cards);
 
@@ -60,29 +63,57 @@ class Bot {
     botLog.add(BotLogEntry(text, type: entryType));
   }
 
-  void playTurn() async {
-    diceRoll = rollDice(6);
+  Future<bool> playTurn() async {
+    var diceRoll = rollDice(6);
     var index = 1;
-    for (var card in cardsInPlay.getCards()) {
+    for (var card in cardsInPlay.values) {
       if (diceRoll != index) {
-        await resolveCard(card);
+        //priority cards = unrest, king of kings etc.
+        var resolvedPriorityCard = await resolvePriorityCards(card);
+
+        if (!resolvedPriorityCard) {
+          await resolveCard(card);
+        }
       }
       index++;
     }
 
     if (diceRoll != 6) {
-      addTokensToCard();
+      addTokensToCard(diceRoll);
     }
 
-    cleanUp();
+    cleanUp(diceRoll);
+
+    if (isEndOfGameTriggered) {
+      if (roundsSinceGameEndTriggered == 1) {
+        hasGameEnded = true;
+      } else {
+        roundsSinceGameEndTriggered++;
+      }
+    }
+
+    return true;
+  }
+
+  Future<bool> resolvePriorityCards(GameCard card) async {
+    if (card.hasIcon(CardIcon.unrest)) {
+      log("Resolves unrest action: alerts user to put an unrest card in pile, and removes card from bots deck");
+      await botCubit.alertAddUnrest();
+      cardsToBeRemovedFromPlayDeck.add(card);
+      return true;
+    }
+
+    return false;
   }
 
   void drawCardsToPlayArea() {
-    var count = cardsInPlay.cardCount();
-    while (cardsInPlay.cardCount() < 5) {
+    for (var i = 0; i < 5; i++) {
+      //Don't overwrite existing card from last round.
+
+      if (cardsInPlay.containsKey(i)) continue;
       var card = drawCard();
       log("Bot adds card " + card.name + " to play area");
-      cardsInPlay.addCard(card);
+      cardsInPlay[i] = card;
     }
   }
 
@@ -95,14 +126,11 @@ class Bot {
 
     log("Draw pile empty!");
     // If empty draw pile
-    var dynastyCard = dynastyDeck.draw();
-    log("Dynasty card added: " + dynastyCard.name);
-    if (dynastyCard.IsType(CardType.accession)) {
-      log("Dynasty card was an accession card, and bot entered empire stage");
-      stage = Stage.empire;
-    }
+    var dynastyCard = drawDynastyCard();
 
-    discardPile.addCard(dynastyCard);
+    if (dynastyCard != null) {
+      discardPile.addCard(dynastyCard);
+    }
 
     log("Shuffling discard pile..");
     discardPile.shuffle();
@@ -113,6 +141,23 @@ class Bot {
     var card = drawPile.draw();
     log("Bot draws " + card.name);
     return card;
+  }
+
+  GameCard? drawDynastyCard() {
+    if (dynastyDeck.cardCount() == 0) {
+      isEndOfGameTriggered = true;
+      botCubit.alertBotTriggeredEndOfGame("Drawn last card of dynasty deck");
+      return null;
+    }
+
+    var dynastyCard = dynastyDeck.draw();
+    log("Dynasty card added: " + dynastyCard.name);
+    if (dynastyCard.IsType(CardType.accession)) {
+      log("Dynasty card was an accession card, and bot entered empire stage");
+      stage = Stage.empire;
+    }
+
+    return dynastyCard;
   }
 
   GameCard drawAndDiscard() {
@@ -137,10 +182,25 @@ class Bot {
     return null;
   }
 
+  GameCard? recallRegion() {
+    for (var card in pinnedCards) {
+      if (card.icons.contains(CardIcon.region)) {
+        pinnedCards.remove(card);
+        drawPile.addCard(card);
+
+        log("Bot recalled region " + card.name);
+        return card;
+      }
+    }
+
+    log("Bot tried to recall region, but has none.");
+    return null;
+  }
+
   int getScore() {
     var score = 0;
     List<GameCard> scoringCards = [];
-    scoringCards.addAll(cardsInPlay.getCards());
+    scoringCards.addAll(cardsInPlay.values);
     scoringCards.addAll(drawPile.getCards());
     scoringCards.addAll(discardPile.getCards());
     scoringCards.addAll(historyDeck.getCards());
@@ -162,7 +222,7 @@ class Bot {
     var pinnedRegions = 0;
 
     for (var pinned in pinnedCards) {
-      if (pinned.type == CardType.region) {
+      if (pinned.hasIcon(CardIcon.region)) {
         pinnedRegions++;
       }
     }
@@ -215,6 +275,8 @@ class Bot {
       return;
     }
 
+    resolveIfKingOfKings(card.card as GameCard);
+
     drawPile.addCard(card.card as GameCard);
 
     if (card.takeUnrest) {
@@ -225,6 +287,22 @@ class Bot {
     progressTokens += card.progressTokens;
     materialTokens += card.materialTokens;
     populationTokens += card.populationTokens;
+  }
+
+  resolveIfKingOfKings(GameCard card) {
+    if (card.name == "King of Kings") {
+      if (stage == Stage.barbarian) {
+        progressTokens += 6;
+        log("Bot got King of Kings, but is in barbariage stage. Gains 6 progress tokens.");
+      }
+      if (stage == Stage.empire) {
+        progressTokens += 3;
+        isEndOfGameTriggered = true;
+        botCubit.alertBotTriggeredEndOfGame("Bot received king of kings card");
+      }
+
+      return true;
+    }
   }
 
   putCardInHistory(GameCard card) {
@@ -319,10 +397,12 @@ class Bot {
     dynastyDeck.addDeck(developmentCards);
   }
 
-  void cleanUp() {
+  void cleanUp(int diceRoll) {
     log("Bot does cleanup");
     var removedCards = cardsToBeRemovedFromPlayDeck;
-    var cards = cardsInPlay.getCards();
+    var cards = cardsInPlay.values;
+
+    // Place cards at correct places from in play cards
     for (var card in cards) {
       if (removedCards.contains(card)) {
         log("Bot does not add " + card.name + " to discard pile");
@@ -332,7 +412,14 @@ class Bot {
       }
     }
 
-    cardsInPlay.removeAll();
+    // Deal with retained card (if any)
+    var retainedCard = cardsInPlay[diceRoll - 1];
+    cardsInPlay = LinkedHashMap<int, GameCard>();
+
+    if (retainedCard != null) {
+      cardsInPlay[diceRoll - 1] = retainedCard;
+    }
+
     drawCardsToPlayArea();
   }
 
@@ -363,7 +450,7 @@ class Bot {
     return false;
   }
 
-  Future<bool> addTokensToCard() async {
+  Future<bool> addTokensToCard(int diceRoll) async {
     botCubit.requireUserAction("Add tokens to card",
         Text("Add 1 progress token to card in place " + diceRoll.toString()));
     return true;

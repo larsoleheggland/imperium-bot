@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:imperium_bot/business/bot/bot.dart';
 import 'package:imperium_bot/business/bot/factions/carthaginians-bot.dart';
 import 'package:imperium_bot/data/card-database.dart';
+import 'package:imperium_bot/data/rules.dart';
 import 'package:imperium_bot/models/card-enums.dart';
 import 'package:imperium_bot/models/card.dart';
 
@@ -19,8 +20,8 @@ class BotCubit extends Cubit<BotState> {
     bot.initialize(this);
   }
 
-  void takeBotTurn() async {
-    bot.playTurn();
+  Future<bool> takeBotTurn() async {
+    return await bot.playTurn();
   }
 
   Future<PlayerSelectedCard> requireCardFromUser(
@@ -47,21 +48,64 @@ class BotCubit extends Cubit<BotState> {
     return true;
   }
 
+  void selectUserCard(PlayerSelectedCard card) {
+    playerSelectedCard = card;
+    userActionCompleter.complete();
+  }
+
+  void confirmUserAction() {
+    userActionCompleter.complete();
+  }
+
+  // User alerts
+
   Future<bool> alertRequireCardExile() async {
-    var userDirections = const Text("Exile a card from market");
+    var userDirections = Column(
+      children: const [
+        Text("Exile a card from market. "),
+        Divider(height: 20),
+        Text(
+          Rules.exile,
+          style: TextStyle(fontSize: 15),
+        )
+      ],
+    );
 
     return await requireUserAction("Exile card", userDirections);
   }
 
   Future<bool> alertTakeUnrest() async {
-    var userDirections = const Text("You take one unrest card");
+    var userDirections = const Text("You take one unrest card.");
 
-    return await requireUserAction("Attack", userDirections);
+    return await alertAttack(userDirections);
+  }
+
+  Future<bool> alertBotTriggeredEndOfGame(String reason) async {
+    var userDirections = Row(children: [
+      Text("Bot has triggered end of game (" + reason + ")"),
+      Divider(height: 10),
+      Text("You and the bot take one more turn before scoring"),
+    ]);
+
+    return await alertCustom("End of game triggered", userDirections);
+  }
+
+  Future<bool> alertAttack(Widget userDirections) async {
+    var rulesAddToUserdirections = Row(
+      children: [
+        userDirections,
+        const Divider(height: 20),
+        const Text(
+            "If you have an ability that allows you to cancel or ignore an attack you can use it to stop the negative effect",
+            style: TextStyle(fontSize: 15))
+      ],
+    );
+    return await requireUserAction("Attack!", userDirections);
   }
 
   Future<bool> alertAddUnrest() async {
     var userDirections = const Text(
-        "Bot played an unrest card. Add one of bots unrest cards to unrest pile");
+        "Bot played an unrest card. Add one card from bots unrest pile to market unrest pile.");
 
     return await requireUserAction("Bot played unrest", userDirections);
   }
@@ -76,20 +120,11 @@ class BotCubit extends Cubit<BotState> {
     return await requireUserAction(title, userDirections);
   }
 
-  Future<bool> addUnrestAndAlertUser() async {
+  Future<bool> alertBotAddingUnrest() async {
     var userDirections = const Text(
-        "Bot got one unrest card. Remove unrest card from unrest pile, and set aside.");
+        "Remove unrest card from market unrest pile, and add it to bots unrest pile.");
     bot.drawPile.addCard(CardDatabase.basicUnrestCard);
-    return await requireUserAction("Remove unrest", userDirections);
-  }
-
-  void selectUserCard(PlayerSelectedCard card) {
-    playerSelectedCard = card;
-    userActionCompleter.complete();
-  }
-
-  void confirmUserAction() {
-    userActionCompleter.complete();
+    return await requireUserAction("Bot received unrest card", userDirections);
   }
 }
 

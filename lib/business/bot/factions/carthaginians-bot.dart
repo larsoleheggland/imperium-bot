@@ -44,17 +44,10 @@ class CarthaginiansBot extends Bot {
             stage.toShortString(),
         entryType: BotLogEntryType.playCard);
 
-    if (card.hasIcon(CardIcon.unrest)) {
-      log("Resolves unrest action: alerts user to put an unrest card in pile, and removes card from bots deck");
-      await botCubit.alertAddUnrest();
-      cardsToBeRemovedFromPlayDeck.add(card);
-      return true;
+    if (stage == Stage.barbarian) {
+      return await resolveBarbarian(card);
     } else {
-      if (stage == Stage.barbarian) {
-        return await resolveBarbarian(card);
-      } else {
-        return await resolveEmpire(card);
-      }
+      return await resolveEmpire(card);
     }
   }
 
@@ -82,8 +75,8 @@ class CarthaginiansBot extends Bot {
     else if (card.hasIcon(CardIcon.attack)) {
       log("Resolves attack icon: break through for region, and You abandon a region, and MAY draw a card.");
       if (await breakthroughFor(<CardType>[CardType.tributary])) {
-        await botCubit.alertCustom(
-            "Attack!", new Text("You abandon a region, and MAY draw a card"));
+        await botCubit.alertAttack(
+            const Text("You abandon a region, and MAY draw a card"));
         return true;
       }
     }
@@ -100,8 +93,7 @@ class CarthaginiansBot extends Bot {
         }
 
         if (await breakthroughFor(<CardType>[CardType.region])) {
-          await botCubit.alertCustom(
-              "Attack!", new Text("You discard two cards."));
+          await botCubit.alertAttack(const Text("You discard two cards."));
           return true;
         }
       }
@@ -250,7 +242,7 @@ class CarthaginiansBot extends Bot {
   }
 
   @override
-  Future<bool> addTokensToCard() async {
+  Future<bool> addTokensToCard(diceRoll) async {
     await botCubit.requireUserAction("Bot cleanup",
         Text("Add 2 material tokens to card in place " + diceRoll.toString()));
 

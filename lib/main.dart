@@ -7,6 +7,7 @@ import 'package:imperium_bot/theme/custom-colors.dart';
 import 'package:imperium_bot/view/form/card-input.dart';
 import 'package:imperium_bot/view/screens/bot-diagnostics-screen.dart';
 import 'package:imperium_bot/view/screens/user-messages-overlay.dart';
+import 'package:imperium_bot/view/widgets/token-inputs.dart';
 import 'package:imperium_bot/view/widgets/user-action-required.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
@@ -97,7 +98,19 @@ class _AppState extends State<App> {
                 ),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [generateBotButtons(context, state)]),
+                    children: [
+                      generateBotButtons(context, state),
+                      Divider(height: 20),
+                      TokenInputs(),
+                      SizedBox(height: 30),
+                      ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              _openBotDiagnostics();
+                            });
+                          },
+                          child: Text("Open bot diagnostics")),
+                    ]),
               );
             }),
       ),
@@ -123,12 +136,31 @@ class _AppState extends State<App> {
     }
   }
 
+  _botRecallRegion() {
+    var region = botCubit.bot.recallRegion();
+    if (region != null) {
+      showTopSnackBar(
+        context,
+        CustomSnackBar.success(
+          message: "Bot recalled region " + region.name,
+        ),
+      );
+    } else {
+      showTopSnackBar(
+        context,
+        const CustomSnackBar.error(
+          message: "Bot has no region to recall",
+        ),
+      );
+    }
+  }
+
   _botDrawCard() {
     var card = botCubit.bot.drawAndDiscard();
     showTopSnackBar(
       context,
       CustomSnackBar.success(
-        message: "Bot discarded " + card.name,
+        message: "Bot added " + card.name + " to discard pile.",
       ),
     );
   }
@@ -155,13 +187,46 @@ class _AppState extends State<App> {
         ));
   }
 
+  Future<bool> _takeBotTurn() async {
+    await botCubit.takeBotTurn();
+    setState(() {});
+    return true;
+  }
+
+  _goToScoring() {
+    botCubit.alertCustom(
+        "Scoring",
+        Center(
+          child: Column(
+            children: [
+              Text("Bot scored"),
+              Text(botCubit.bot.getScore().toString() + " points",
+                  style: TextStyle(fontSize: 80)),
+            ],
+          ),
+        ));
+  }
+
   generateBotButtons(BuildContext context, BotState state) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          BigButton("Take bot turn", CustomColors.red, botCubit.takeBotTurn),
+          if (!botCubit.bot.hasGameEnded)
+            BigButton(
+              "Take bot turn",
+              CustomColors.red,
+              _takeBotTurn,
+              height: 100,
+            ),
+          if (botCubit.bot.hasGameEnded)
+            BigButton(
+              "Go to scoring",
+              CustomColors.red,
+              _goToScoring,
+              height: 100,
+            ),
           SizedBox(height: 10),
           Row(
             //addUnrestAndAlertUser()
@@ -169,7 +234,8 @@ class _AppState extends State<App> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
-                  child: BigButton("Draw card", Colors.black87, _botDrawCard)),
+                  child: BigButton(
+                      "Recall region", Colors.black87, _botRecallRegion)),
               SizedBox(width: 10),
               Expanded(
                   child: BigButton(
@@ -183,18 +249,13 @@ class _AppState extends State<App> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
+                  child: BigButton("Draw card", Colors.black87, _botDrawCard)),
+              SizedBox(width: 10),
+              Expanded(
                   child: BigButton("Give unrest", Colors.black87,
-                      botCubit.addUnrestAndAlertUser)),
+                      botCubit.alertBotAddingUnrest)),
             ],
           ),
-          SizedBox(height: 30),
-          ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  _openBotDiagnostics();
-                });
-              },
-              child: Text("Open bot diagnostics")),
         ],
       ),
     );

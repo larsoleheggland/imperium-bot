@@ -118,16 +118,39 @@ class GameCard {
       return 5;
     }
     if (victoryPointsText.contains("history")) {
-      var extractIntegers =
-          victoryPointsText.replaceAll(new RegExp(r'[^0-9]'), '');
-      return int.parse(extractIntegers);
+      var stringList = victoryPointsText.split('');
+      var resultNumber = "";
+      var foundNumber = false;
+      // use first (highest) number as indicated by rules
+      for (var rune in stringList) {
+        if (isNumeric(rune)) {
+          resultNumber += rune;
+          foundNumber = true;
+        } else if (foundNumber) {
+          break;
+        }
+      }
+
+      try {
+        var result = int.parse(resultNumber);
+        return result;
+      } catch (e) {
+        return 0;
+      }
     }
     try {
-      return int.parse(victoryPointsText);
+      var result = int.parse(victoryPointsText);
+      return result;
     } catch (e) {
-      var debug = e;
       return 0;
     }
+  }
+
+  bool isNumeric(String s) {
+    if (s == null) {
+      return false;
+    }
+    return double.tryParse(s) != null;
   }
 
   CardType _parseType(String type) {
@@ -159,9 +182,9 @@ class GameCard {
       case "fame":
         return CardType.fame;
       case "fame a":
-        return CardType.fameA;
+        return CardType.fame;
       case "fame b":
-        return CardType.fameB;
+        return CardType.fame;
     }
 
     debugPrint("Undefined card type: " + type);

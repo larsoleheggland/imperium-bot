@@ -86,8 +86,7 @@ class _BotDiagnosticsState extends State<BotDiagnosticsScreen> {
             Text("Material tokens: " + botCubit.bot.materialTokens.toString()),
             Text("population tokens: " +
                 botCubit.bot.populationTokens.toString()),
-            Text(
-                "progress tokens: " + botCubit.bot.populationTokens.toString()),
+            Text("progress tokens: " + botCubit.bot.progressTokens.toString()),
             Divider(height: 10, color: Colors.white54),
             Text("Cards in draw pile: " +
                 botCubit.bot.drawPile.cardCount().toString()),
@@ -96,7 +95,7 @@ class _BotDiagnosticsState extends State<BotDiagnosticsScreen> {
             Text("Cards in dynasty deck: " +
                 botCubit.bot.dynastyDeck.cardCount().toString()),
             Text("Cards in play: " +
-                botCubit.bot.cardsInPlay.cardCount().toString()),
+                botCubit.bot.cardsInPlay.values.length.toString()),
             Text("Cards in history: " +
                 botCubit.bot.historyDeck.cardCount().toString()),
             Text("Pinned cards: " + botCubit.bot.pinnedCards.length.toString()),

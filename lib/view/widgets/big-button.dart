@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class BigButton extends StatelessWidget {
@@ -6,12 +7,14 @@ class BigButton extends StatelessWidget {
   final Color color;
   final VoidCallback onPressed;
 
-  BigButton(this.buttonText, this.color, this.onPressed);
+  double height;
+
+  BigButton(this.buttonText, this.color, this.onPressed, {this.height = 70});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: height,
       width: double.infinity,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black, width: 2),

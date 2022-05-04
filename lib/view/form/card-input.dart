@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_number_picker/flutter_number_picker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:imperium_bot/blocs/bot-bloc.dart';
 import 'package:imperium_bot/data/card-database.dart';
@@ -8,6 +7,7 @@ import 'package:imperium_bot/extensions/enum-extensions.dart';
 import 'package:imperium_bot/models/card-enums.dart';
 import 'package:imperium_bot/models/card.dart';
 import 'package:imperium_bot/singleton/bloc-sigleton.dart';
+import 'package:imperium_bot/view/widgets/custom-number-picker.dart';
 
 class CardFormInput extends StatefulWidget {
   final CardAcquireType acquireType;
@@ -36,10 +36,16 @@ class _CardFormInputState extends State<CardFormInput> {
   int materialTokens = 0;
   int progressTokens = 0;
 
+  bool showExtraInfo = false;
+
   _CardFormInputState(this.acquireType, this.cardTypes) {
     shouldTakeUnrest = acquireType == CardAcquireType.acquire;
 
     if (cardTypes.contains(CardType.region)) {
+      shouldTakeUnrest = false;
+    }
+
+    if (cardTypes.contains(CardType.fame)) {
       shouldTakeUnrest = false;
     }
   }
@@ -91,26 +97,57 @@ class _CardFormInputState extends State<CardFormInput> {
   }
 
   Widget _generateUserDirections() {
-    return RichText(
-      text: TextSpan(
-        style: const TextStyle(
-          fontSize: 14.0,
+    return Column(
+      children: [
+        RichText(
+          text: TextSpan(
+            style: const TextStyle(
+              fontSize: 14.0,
+            ),
+            children: <TextSpan>[
+              const TextSpan(text: 'The bot is '),
+              if (acquireType == CardAcquireType.acquire)
+                const TextSpan(
+                    text: 'aqcuiring ',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+              if (acquireType == CardAcquireType.breakthrough)
+                const TextSpan(
+                    text: 'breaking through for ',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+              const TextSpan(text: "a "),
+              for (var type in _generateTypeList()) type,
+            ],
+          ),
         ),
-        children: <TextSpan>[
-          const TextSpan(text: 'The bot is '),
-          if (acquireType == CardAcquireType.acquire)
-            const TextSpan(
-                text: 'aqcuiring ',
-                style: TextStyle(fontWeight: FontWeight.bold)),
-          if (acquireType == CardAcquireType.breakthrough)
-            const TextSpan(
-                text: 'breaking through for ',
-                style: TextStyle(fontWeight: FontWeight.bold)),
-          const TextSpan(text: "a "),
-          for (var type in _generateTypeList()) type,
-        ],
-      ),
+      ],
     );
+  }
+
+  _showExtraRulesInfo() {
+    if (showExtraInfo) {
+      return Column(children: const [
+        SizedBox(height: 10),
+        Text(
+            "After picking card, put card aside. Add eventual unrest card either to bot unrest pile (if acquiring) or market unrest pile (if breaking through)",
+            style: TextStyle(fontSize: 13)),
+        SizedBox(height: 10),
+        Text(
+            "Bot always chooses card with the most victory points. If tie, choose the one with most tokens. If still a tie, choose lowest number. ",
+            style: TextStyle(fontSize: 13)),
+        SizedBox(height: 10),
+      ]);
+    } else {
+      return Center(
+        child: ElevatedButton(
+            style: ElevatedButton.styleFrom(primary: Colors.blue),
+            onPressed: () {
+              setState(() {
+                showExtraInfo = true;
+              });
+            },
+            child: const Text("See rules, and explanation")),
+      );
+    }
   }
 
   List<TextSpan> _generateTypeList() {
@@ -163,7 +200,7 @@ class _CardFormInputState extends State<CardFormInput> {
             _generateTokenInputs(),
             if (acquireType == CardAcquireType.acquire)
               CheckboxListTile(
-                title: Text(
+                title: const Text(
                   "Should take unrest?",
                   style: TextStyle(color: Colors.white),
                 ),
@@ -180,7 +217,7 @@ class _CardFormInputState extends State<CardFormInput> {
                 controlAffinity:
                     ListTileControlAffinity.leading, //  <-- leading Checkbox
               ),
-            Divider(height: 20, color: Colors.white54),
+            const Divider(height: 20, color: Colors.white54),
           ],
         ),
       );
@@ -192,12 +229,14 @@ class _CardFormInputState extends State<CardFormInput> {
           padding: EdgeInsets.all(8.0),
           child: Text("No cards found."),
         ),
-        Divider(height: 20),
+        const Divider(height: 20),
         ElevatedButton(
             onPressed: () {
               _onNotPossible();
             },
             child: const Text("Can't acquire card")),
+        const Divider(height: 20),
+        _showExtraRulesInfo()
       ],
     );
   }
@@ -247,7 +286,7 @@ class _CardFormInputState extends State<CardFormInput> {
           children: [
             Text("Progress tokens"),
             CustomNumberPicker(
-              initialValue: 0,
+              value: 0,
               maxValue: 20,
               minValue: 0,
               step: 1,
@@ -267,7 +306,7 @@ class _CardFormInputState extends State<CardFormInput> {
           children: [
             Text("Material tokens"),
             CustomNumberPicker(
-              initialValue: 0,
+              value: 0,
               maxValue: 20,
               minValue: 0,
               step: 1,

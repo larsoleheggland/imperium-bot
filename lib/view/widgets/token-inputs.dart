@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:imperium_bot/blocs/bot-bloc.dart';
-import 'package:imperium_bot/singleton/bloc-sigleton.dart';
 import 'package:imperium_bot/view/widgets/custom-number-picker.dart';
 
 class TokenInputs extends StatefulWidget {
-  const TokenInputs({Key? key}) : super(key: key);
-
+  BotCubit botCubit;
+  TokenInputs(this.botCubit, {Key? key}) : super(key: key);
   @override
-  _TokenInputsState createState() => _TokenInputsState();
+  _TokenInputsState createState() => _TokenInputsState(botCubit);
 }
 
 class _TokenInputsState extends State<TokenInputs> {
-  BotCubit botCubit = BlocSingletons.botCubit;
+  BotCubit botCubit;
   int someNumber = 0;
+
+  _TokenInputsState(this.botCubit);
   @override
   Widget build(BuildContext context) {
     return Container(

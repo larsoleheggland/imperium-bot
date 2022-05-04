@@ -10,6 +10,7 @@ class CardDatabase {
   static List<GameCard> all = [];
 
   static Future<bool> initialize() async {
+    all = [];
     commons = await CardParser.parseFile("commons", CardCategory.common);
     fame = await CardParser.parseFile("fame", CardCategory.common);
     basicUnrestCard = generateUnrestCard();

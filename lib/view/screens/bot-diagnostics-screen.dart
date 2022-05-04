@@ -5,12 +5,18 @@ import 'package:imperium_bot/models/bot-log-entry.dart';
 import 'package:imperium_bot/singleton/bloc-sigleton.dart';
 
 class BotDiagnosticsScreen extends StatefulWidget {
+  BotCubit botCubit;
+
+  BotDiagnosticsScreen(this.botCubit);
+
   @override
-  State<StatefulWidget> createState() => _BotDiagnosticsState();
+  State<StatefulWidget> createState() => _BotDiagnosticsState(this.botCubit);
 }
 
 class _BotDiagnosticsState extends State<BotDiagnosticsScreen> {
-  BotCubit botCubit = BlocSingletons.botCubit;
+  BotCubit botCubit;
+
+  _BotDiagnosticsState(this.botCubit);
 
   @override
   Widget build(BuildContext context) {

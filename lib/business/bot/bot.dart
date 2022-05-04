@@ -15,8 +15,6 @@ class Bot {
   final Faction faction;
   final Difficulty difficulty;
 
-  List<BotLogEntry> botLog = [];
-
   int materialTokens = 0;
   int populationTokens = 0;
   int progressTokens = 0;
@@ -35,8 +33,8 @@ class Bot {
   late CardDeck dynastyDeck;
   late CardDeck historyDeck;
   late LinkedHashMap<int, GameCard> cardsInPlay;
-
   late List<GameCard> cardsToBeRemovedFromPlayDeck;
+  List<BotLogEntry> botLog = [];
 
   Bot(this.faction, this.difficulty);
 
@@ -57,6 +55,30 @@ class Bot {
     drawCardsToPlayArea();
 
     extraSetup();
+  }
+
+  void reset() {
+    materialTokens = 0;
+    populationTokens = 0;
+    progressTokens = 0;
+
+    Stage stage = Stage.barbarian;
+
+    isEndOfGameTriggered = false;
+    hasGameEnded = false;
+    roundsSinceGameEndTriggered = 0;
+
+    pinnedCards = [];
+    drawPile = CardDeck([], "(Bot) Card deck");
+    dynastyDeck;
+
+    historyDeck = CardDeck([], "(Bot) History Deck");
+    discardPile = CardDeck([], "(Bot) Discard Pile");
+    cardsInPlay = LinkedHashMap<int, GameCard>();
+
+    cardsToBeRemovedFromPlayDeck = [];
+    botLog = [];
+    CardDatabase.initialize();
   }
 
   void log(String text, {BotLogEntryType entryType = BotLogEntryType.info}) {

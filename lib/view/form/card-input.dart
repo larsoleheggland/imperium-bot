@@ -6,19 +6,19 @@ import 'package:imperium_bot/data/card-database.dart';
 import 'package:imperium_bot/extensions/enum-extensions.dart';
 import 'package:imperium_bot/models/card-enums.dart';
 import 'package:imperium_bot/models/card.dart';
-import 'package:imperium_bot/singleton/bloc-sigleton.dart';
 import 'package:imperium_bot/view/widgets/custom-number-picker.dart';
 
 class CardFormInput extends StatefulWidget {
   final CardAcquireType acquireType;
   final List<CardType> cardType;
+  BotCubit botCubit;
 
-  const CardFormInput(this.acquireType, this.cardType, {Key? key})
+  CardFormInput(this.botCubit, this.acquireType, this.cardType, {Key? key})
       : super(key: key);
 
   @override
   _CardFormInputState createState() =>
-      _CardFormInputState(acquireType, cardType);
+      _CardFormInputState(botCubit, acquireType, cardType);
 }
 
 class _CardFormInputState extends State<CardFormInput> {
@@ -26,7 +26,7 @@ class _CardFormInputState extends State<CardFormInput> {
   final List<CardType> cardTypes;
 
   final textController = TextEditingController();
-  BotCubit botCubit = BlocSingletons.botCubit;
+  BotCubit botCubit;
 
   late GameCard? selectedCard;
   late bool shouldTakeUnrest;
@@ -38,7 +38,7 @@ class _CardFormInputState extends State<CardFormInput> {
 
   bool showExtraInfo = false;
 
-  _CardFormInputState(this.acquireType, this.cardTypes) {
+  _CardFormInputState(this.botCubit, this.acquireType, this.cardTypes) {
     shouldTakeUnrest = acquireType == CardAcquireType.acquire;
 
     if (cardTypes.contains(CardType.region)) {

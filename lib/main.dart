@@ -103,7 +103,7 @@ class _AppState extends State<App> {
                         endOfGameTriggeredMessage(),
                       generateBotButtons(context, state),
                       Divider(height: 20),
-                      TokenInputs(),
+                      TokenInputs(this.botCubit),
                       SizedBox(height: 30),
                       Center(
                           child: ElevatedButton(
@@ -112,16 +112,30 @@ class _AppState extends State<App> {
                                 setState(() {});
                               },
                               child: Text("Trigger end of game"))),
-                      Divider(height: 50),
-                      ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              _openBotDiagnostics();
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                              primary: CustomColors.brown),
-                          child: Text("Open bot diagnostics")),
+                      Divider(height: 40),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                              onPressed: () {
+                                botCubit.bot.reset();
+                                setState(() {});
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  primary: CustomColors.brown),
+                              child: Text("Reset")),
+                          SizedBox(width: 20),
+                          ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  _openBotDiagnostics();
+                                });
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  primary: CustomColors.brown),
+                              child: Text("Open bot diagnostics")),
+                        ],
+                      ),
                     ]),
               );
             }),
@@ -195,7 +209,8 @@ class _AppState extends State<App> {
   _requireCard(BotRequestCard state, context) {
     Future.microtask(() => Navigator.push(
           context,
-          UserMessagesOverlay(CardFormInput(state.acquireType, state.cardType)),
+          UserMessagesOverlay(
+              CardFormInput(botCubit, state.acquireType, state.cardType)),
         ));
   }
 
@@ -210,7 +225,7 @@ class _AppState extends State<App> {
   _openBotDiagnostics() {
     Future.microtask(() => Navigator.push(
           context,
-          UserMessagesOverlay(BotDiagnosticsScreen()),
+          UserMessagesOverlay(BotDiagnosticsScreen(botCubit)),
         ));
   }
 

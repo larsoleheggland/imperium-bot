@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:imperium_bot/blocs/bot-bloc.dart';
 import 'package:imperium_bot/extensions/enum-extensions.dart';
 import 'package:imperium_bot/models/bot-log-entry.dart';
-import 'package:imperium_bot/singleton/bloc-sigleton.dart';
 
 class BotDiagnosticsScreen extends StatefulWidget {
   BotCubit botCubit;
@@ -100,8 +99,8 @@ class _BotDiagnosticsState extends State<BotDiagnosticsScreen> {
                 botCubit.bot.discardPile.cardCount().toString()),
             Text("Cards in dynasty deck: " +
                 botCubit.bot.dynastyDeck.cardCount().toString()),
-            Text("Cards in play: " +
-                botCubit.bot.cardsInPlay.values.length.toString()),
+            Text(
+                "Cards in play: " + botCubit.bot.cardsInPlay.length.toString()),
             Text("Cards in history: " +
                 botCubit.bot.historyDeck.cardCount().toString()),
             Text("Pinned cards: " + botCubit.bot.pinnedCards.length.toString()),

@@ -29,11 +29,11 @@ class CardDeck {
   }
 
   void addCard(GameCard card) {
-    _cards.add(card);
+    _cards.insert(0, card);
   }
 
   void addDeck(CardDeck deck) {
-    _cards.addAll(deck.getCards());
+    _cards.insertAll(0, deck.getCards());
   }
 
   void remove(GameCard card) {
@@ -66,6 +66,6 @@ class CardDeck {
   }
 
   void removeAll() {
-    _cards = [];
+    _cards.clear();
   }
 }

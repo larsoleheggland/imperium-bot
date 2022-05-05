@@ -1,4 +1,3 @@
-import 'dart:collection';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -25,6 +24,7 @@ class Bot {
   bool isEndOfGameTriggered = false;
   bool hasGameEnded = false;
   int roundsSinceGameEndTriggered = 0;
+  int latestDiceRoll = 0;
 
   late BotCubit botCubit;
   late List<GameCard> pinnedCards = [];
@@ -32,8 +32,11 @@ class Bot {
   late CardDeck discardPile;
   late CardDeck dynastyDeck;
   late CardDeck historyDeck;
-  late LinkedHashMap<int, GameCard> cardsInPlay;
+  late List<GameCard> removedCards = [];
+  late List<GameCard> cardsInPlay;
   late List<GameCard> cardsToBeRemovedFromPlayDeck;
+
+  GameCard? retainedCardInPlay;
   List<BotLogEntry> botLog = [];
 
   Bot(this.faction, this.difficulty);
@@ -46,7 +49,7 @@ class Bot {
     cardsToBeRemovedFromPlayDeck = [];
     historyDeck = CardDeck([], "(Bot) History Deck");
     discardPile = CardDeck([], "(Bot) Discard Pile");
-    cardsInPlay = LinkedHashMap<int, GameCard>();
+    cardsInPlay = [];
 
     CardDatabase.all.addAll(cards);
 
@@ -74,7 +77,7 @@ class Bot {
 
     historyDeck = CardDeck([], "(Bot) History Deck");
     discardPile = CardDeck([], "(Bot) Discard Pile");
-    cardsInPlay = LinkedHashMap<int, GameCard>();
+    cardsInPlay = [];
 
     cardsToBeRemovedFromPlayDeck = [];
     botLog = [];
@@ -86,10 +89,10 @@ class Bot {
   }
 
   Future<bool> playTurn() async {
-    var diceRoll = rollDice(6);
+    latestDiceRoll = rollDice(6);
     var index = 1;
-    for (var card in cardsInPlay.values) {
-      if (diceRoll != index) {
+    for (var card in cardsInPlay) {
+      if (latestDiceRoll != index) {
         //priority cards = unrest, king of kings etc.
         var resolvedPriorityCard = await resolvePriorityCards(card);
 
@@ -100,11 +103,11 @@ class Bot {
       index++;
     }
 
-    if (diceRoll != 6) {
-      addTokensToCard(diceRoll);
+    if (latestDiceRoll != 6) {
+      addTokensToCard(latestDiceRoll);
     }
 
-    cleanUp(diceRoll);
+    cleanUp();
 
     if (isEndOfGameTriggered) {
       if (roundsSinceGameEndTriggered == 1) {
@@ -129,13 +132,26 @@ class Bot {
   }
 
   void drawCardsToPlayArea() {
-    for (var i = 0; i < 5; i++) {
-      //Don't overwrite existing card from last round.
+    var cardsToDraw = 4;
 
-      if (cardsInPlay.containsKey(i)) continue;
+    if (latestDiceRoll == 6) {
+      cardsToDraw++;
+    }
+
+    //initial draw
+    if (latestDiceRoll == 0) {
+      cardsToDraw = 5;
+    }
+
+    while (cardsInPlay.length < cardsToDraw) {
+      //Don't overwrite existing card from last round.
       var card = drawCard();
       log("Bot adds card " + card.name + " to play area");
-      cardsInPlay[i] = card;
+      cardsInPlay.add(card);
+    }
+
+    if (retainedCardInPlay != null) {
+      cardsInPlay.insert(latestDiceRoll - 1, retainedCardInPlay as GameCard);
     }
   }
 
@@ -222,7 +238,7 @@ class Bot {
   int getScore() {
     var score = 0;
     List<GameCard> scoringCards = [];
-    scoringCards.addAll(cardsInPlay.values);
+    scoringCards.addAll(cardsInPlay);
     scoringCards.addAll(drawPile.getCards());
     scoringCards.addAll(discardPile.getCards());
     scoringCards.addAll(historyDeck.getCards());
@@ -281,7 +297,7 @@ class Bot {
   }
 
   playRegion(GameCard card) {
-    pinnedCards.add(card);
+    pinnedCards.insert(0, card);
     cardsToBeRemovedFromPlayDeck.add(card);
     log("Bot played region " + card.name);
   }
@@ -289,7 +305,7 @@ class Bot {
   pinCard(GameCard card) {
     log("Bot pinned card  " + card.name);
 
-    pinnedCards.add(card);
+    pinnedCards.insert(0, card);
   }
 
   addPlayerSelectedCard(PlayerSelectedCard card) {
@@ -414,33 +430,32 @@ class Bot {
     nationCards.shuffle();
 
     dynastyDeck = CardDeck([], "(Bot) Dynasty deck");
-    dynastyDeck.addDeck(nationCards);
-    dynastyDeck.addCard(accessionCard);
     dynastyDeck.addDeck(developmentCards);
+    dynastyDeck.addCard(accessionCard);
+    dynastyDeck.addDeck(nationCards);
   }
 
-  void cleanUp(int diceRoll) {
+  void cleanUp() {
     log("Bot does cleanup");
-    var removedCards = cardsToBeRemovedFromPlayDeck;
-    var cards = cardsInPlay.values;
-
     // Place cards at correct places from in play cards
-    for (var card in cards) {
-      if (removedCards.contains(card)) {
+    for (var card in cardsInPlay) {
+      if (cardsToBeRemovedFromPlayDeck.contains(card)) {
         log("Bot does not add " + card.name + " to discard pile");
+        removedCards.insert(0, card);
         continue;
       } else {
         discardPile.addCard(card);
       }
     }
 
-    // Deal with retained card (if any)
-    var retainedCard = cardsInPlay[diceRoll - 1];
-    cardsInPlay = LinkedHashMap<int, GameCard>();
-
-    if (retainedCard != null) {
-      cardsInPlay[diceRoll - 1] = retainedCard;
+    try {
+      retainedCardInPlay = cardsInPlay[latestDiceRoll - 1];
+    } catch (e) {
+      retainedCardInPlay = null;
     }
+
+    cardsInPlay = [];
+    cardsToBeRemovedFromPlayDeck.clear();
 
     drawCardsToPlayArea();
   }

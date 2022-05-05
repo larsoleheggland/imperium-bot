@@ -1,4 +1,4 @@
-#Thu May 05 00:22:52 CEST 2022
+#Fri May 06 01:32:02 CEST 2022
 base.0=C\:\\Users\\larso\\StudioProjects\\imperium_bot\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

@@ -71,7 +71,7 @@ class _PinnedCardDeckListState extends State<PinnedCardDeckList> {
                       ),
                       Text(_generateIconString(card),
                           style: _getTextStyle(
-                            fontSize: 10,
+                            fontSize: 13,
                             color: Colors.grey,
                           ))
                     ]),

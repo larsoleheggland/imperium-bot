@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:imperium_bot/blocs/bot-bloc.dart';
-import 'package:imperium_bot/singleton/bloc-sigleton.dart';
 
 class RequiredUserAction extends StatefulWidget {
   final String title;
   final Widget userDirections;
-  const RequiredUserAction(this.title, this.userDirections, {Key? key})
+  final BotCubit botCubit;
+  const RequiredUserAction(this.botCubit, this.title, this.userDirections,
+      {Key? key})
       : super(key: key);
 
   @override
   _RequiredUserActionState createState() =>
-      _RequiredUserActionState(title, userDirections);
+      _RequiredUserActionState(botCubit, title, userDirections);
 }
 
 class _RequiredUserActionState extends State<RequiredUserAction> {
   final String title;
   final Widget userDirections;
 
-  BotCubit botCubit = BlocSingletons.botCubit;
+  BotCubit botCubit;
 
-  _RequiredUserActionState(this.title, this.userDirections);
+  _RequiredUserActionState(this.botCubit, this.title, this.userDirections);
 
   @override
   Widget build(BuildContext context) {

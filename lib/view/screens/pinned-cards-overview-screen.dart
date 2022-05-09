@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:imperium_bot/blocs/bot-bloc.dart';
+import 'package:imperium_bot/theme/custom-colors.dart';
+import 'package:imperium_bot/view/widgets/big-button.dart';
+import 'package:imperium_bot/view/widgets/pinned-card-deck-list.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
@@ -22,10 +25,54 @@ class _PinnedCardsOverviewScreenState extends State<PinnedCardsOverviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Bot diagnostics'),
+        title: const Text('Pinned cards'),
       ),
       backgroundColor: Colors.transparent,
-      body: Text("Pinned cards"),
+      body: _generateBody(),
+    );
+  }
+
+  Widget _generateBody() {
+    if (botCubit.bot.pinnedCards.isEmpty) {
+      return const Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Text("Bot has no pinned cards."),
+      );
+    }
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SingleChildScrollView(child: _generatePinnedCards()),
+              Row(
+                children: [
+                  Expanded(
+                    child: BigButton(
+                      "Abandon region",
+                      CustomColors.red,
+                      _botAbandonRegion,
+                      height: 100,
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Expanded(
+                      child: BigButton(
+                    "Recall region",
+                    CustomColors.red,
+                    _botRecallRegion,
+                    height: 100,
+                  )),
+                ],
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -46,6 +93,7 @@ class _PinnedCardsOverviewScreenState extends State<PinnedCardsOverviewScreen> {
         ),
       );
     }
+    setState(() {});
   }
 
   _botRecallRegion() {
@@ -65,5 +113,10 @@ class _PinnedCardsOverviewScreenState extends State<PinnedCardsOverviewScreen> {
         ),
       );
     }
+    setState(() {});
+  }
+
+  Widget _generatePinnedCards() {
+    return PinnedCardDeckList(botCubit, botCubit.bot.pinnedCards);
   }
 }

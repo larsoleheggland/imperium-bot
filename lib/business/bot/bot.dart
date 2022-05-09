@@ -110,7 +110,7 @@ class Bot {
     cleanUp();
 
     if (isEndOfGameTriggered) {
-      if (roundsSinceGameEndTriggered == 1) {
+      if (roundsSinceGameEndTriggered > 0) {
         hasGameEnded = true;
       } else {
         roundsSinceGameEndTriggered++;
@@ -182,7 +182,7 @@ class Bot {
   }
 
   GameCard? drawDynastyCard() {
-    if (dynastyDeck.cardCount() == 0) {
+    if (dynastyDeck.cardCount() == 0 && !isEndOfGameTriggered) {
       isEndOfGameTriggered = true;
       botCubit.alertBotTriggeredEndOfGame("Drawn last card of dynasty deck");
       return null;
@@ -205,7 +205,13 @@ class Bot {
     return card;
   }
 
-  GameCard? abandonRegion() {
+  GameCard? abandonRegion({GameCard? card}) {
+    if (card != null) {
+      pinnedCards.remove(card);
+      discardPile.addCard(card);
+      return card;
+    }
+
     for (var card in pinnedCards) {
       if (card.icons.contains(CardIcon.region)) {
         pinnedCards.remove(card);
@@ -220,7 +226,15 @@ class Bot {
     return null;
   }
 
-  GameCard? recallRegion() {
+  GameCard? recallRegion({GameCard? card}) {
+    if (card != null) {
+      pinnedCards.remove(card);
+      drawPile.addCard(card);
+      return card;
+    }
+
+    // Recall newest
+
     for (var card in pinnedCards) {
       if (card.icons.contains(CardIcon.region)) {
         pinnedCards.remove(card);

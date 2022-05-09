@@ -81,11 +81,15 @@ class BotCubit extends Cubit<BotState> {
   }
 
   Future<bool> alertBotTriggeredEndOfGame(String reason) async {
-    var userDirections = Row(children: [
-      Text("Bot has triggered end of game (" + reason + ")"),
-      Divider(height: 10),
-      Text("You and the bot take one more turn before scoring"),
-    ]);
+    var userDirections = Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("Bot has triggered end of game"),
+          Text("(" + reason + ")"),
+          Divider(height: 10),
+          Text("You and the bot take one more turn before scoring"),
+        ]);
 
     return await alertCustom("End of game triggered", userDirections);
   }

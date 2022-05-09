@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:imperium_bot/blocs/bot-bloc.dart';
-import 'package:imperium_bot/view/widgets/card-deck-list.dart';
+import 'package:imperium_bot/view/widgets/simple-card-deck-list.dart';
 
 class BotDeckOverviewScreen extends StatefulWidget {
   BotCubit botCubit;
@@ -57,7 +57,7 @@ class _BotDeckOverviewScreenState extends State<BotDeckOverviewScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: Text("Draw pile"),
                         ),
-                        CardDeckList(
+                        SimpleCardDeckList(
                           botCubit,
                           botCubit.bot.drawPile.getCards(),
                           compact: true,
@@ -71,7 +71,7 @@ class _BotDeckOverviewScreenState extends State<BotDeckOverviewScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: Text("Discard pile"),
                         ),
-                        CardDeckList(
+                        SimpleCardDeckList(
                           botCubit,
                           botCubit.bot.discardPile.getCards(),
                           compact: true,
@@ -85,7 +85,7 @@ class _BotDeckOverviewScreenState extends State<BotDeckOverviewScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: Text("Dynasty deck"),
                         ),
-                        CardDeckList(
+                        SimpleCardDeckList(
                           botCubit,
                           botCubit.bot.dynastyDeck.getCards(),
                           compact: true,

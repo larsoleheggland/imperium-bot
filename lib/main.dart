@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:imperium_bot/blocs/bot-bloc.dart';
 import 'package:imperium_bot/data/card-database.dart';
+import 'package:imperium_bot/models/card-enums.dart';
 import 'package:imperium_bot/theme/custom-colors.dart';
 import 'package:imperium_bot/view/screens/bot-deck-overview.dart';
 import 'package:imperium_bot/view/screens/bot-diagnostics-screen.dart';
@@ -14,7 +15,7 @@ import 'package:imperium_bot/view/widgets/user-messages-overlay.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
-import 'singleton/bloc-sigleton.dart';
+import 'view/screens/bot-setup-screen.dart';
 import 'view/widgets/big-button.dart';
 
 void main() {
@@ -56,7 +57,8 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   String lastEvent = "";
-  BotCubit botCubit = BlocSingletons.botCubit;
+  BotCubit? botCubit = null;
+  //BotCubit? botCubit = BotCubit(Faction.carthaginians, Difficulty.chieftain);
 
   @override
   void initState() {
@@ -71,7 +73,7 @@ class _AppState extends State<App> {
     return Scaffold(
       body: Center(
         child: BlocBuilder<BotCubit, BotState>(
-            bloc: BlocSingletons.botCubit,
+            bloc: getBotCubit(),
             builder: (context, state) {
               if (lastEvent != state.hashCode.toString()) {
                 if (state is BotRequestCard) {
@@ -96,16 +98,16 @@ class _AppState extends State<App> {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if (botCubit.bot.isEndOfGameTriggered)
+                      if (getBotCubit().bot.isEndOfGameTriggered)
                         endOfGameTriggeredMessage(),
                       generateBotButtons(context, state),
                       Divider(height: 20),
-                      TokenInputs(this.botCubit),
+                      TokenInputs(this.getBotCubit()),
                       SizedBox(height: 30),
                       Center(
                           child: ElevatedButton(
                               onPressed: () {
-                                botCubit.bot.isEndOfGameTriggered = true;
+                                getBotCubit().bot.isEndOfGameTriggered = true;
                                 setState(() {});
                               },
                               child: Text("Trigger end of game"))),
@@ -115,7 +117,7 @@ class _AppState extends State<App> {
                         children: [
                           ElevatedButton(
                               onPressed: () {
-                                botCubit.bot.reset();
+                                reset();
                                 setState(() {});
                               },
                               style: ElevatedButton.styleFrom(
@@ -140,8 +142,30 @@ class _AppState extends State<App> {
     );
   }
 
+  void reset() {
+    botCubit = null;
+    setState(() {});
+  }
+
+  BotCubit getBotCubit() {
+    if (botCubit == null) {
+      Future.microtask(() => Navigator.push(
+            context,
+            UserMessagesOverlay(BotSetupScreen(_setBotCubit)),
+          ));
+      botCubit = BotCubit(Faction.carthaginians, Difficulty.imperator);
+      var debug = true;
+    }
+
+    return botCubit as BotCubit;
+  }
+
+  _setBotCubit(BotCubit botCubit) {
+    botCubit = botCubit;
+  }
+
   Widget endOfGameTriggeredMessage() {
-    if (botCubit.bot.hasGameEnded) {
+    if (getBotCubit().bot.hasGameEnded) {
       return Container();
     }
 
@@ -161,14 +185,14 @@ class _AppState extends State<App> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          if (!botCubit.bot.hasGameEnded)
+          if (!getBotCubit().bot.hasGameEnded)
             BigButton(
               "Take bot turn",
               CustomColors.red,
               _takeBotTurn,
               height: 100,
             ),
-          if (botCubit.bot.hasGameEnded)
+          if (getBotCubit().bot.hasGameEnded)
             BigButton(
               "Go to scoring",
               CustomColors.red,
@@ -200,7 +224,7 @@ class _AppState extends State<App> {
               SizedBox(width: 10),
               Expanded(
                   child: BigButton("Give unrest", Colors.black87,
-                      botCubit.alertBotAddingUnrest)),
+                      getBotCubit().alertBotAddingUnrest)),
             ],
           ),
         ],
@@ -211,19 +235,19 @@ class _AppState extends State<App> {
   _openPinnedCardOverview() {
     Future.microtask(() => Navigator.push(
           context,
-          UserMessagesOverlay(PinnedCardsOverviewScreen(botCubit)),
+          UserMessagesOverlay(PinnedCardsOverviewScreen(getBotCubit())),
         ));
   }
 
   _openBotDeck() {
     Future.microtask(() => Navigator.push(
           context,
-          UserMessagesOverlay(BotDeckOverviewScreen(botCubit)),
+          UserMessagesOverlay(BotDeckOverviewScreen(getBotCubit())),
         ));
   }
 
   _botDrawCard() {
-    var card = botCubit.bot.drawAndDiscard();
+    var card = getBotCubit().bot.drawAndDiscard();
     showTopSnackBar(
       context,
       CustomSnackBar.success(
@@ -235,40 +259,40 @@ class _AppState extends State<App> {
   _requireCard(BotRequestCard state, context) {
     Future.microtask(() => Navigator.push(
           context,
-          UserMessagesOverlay(
-              CardFormInputScreen(botCubit, state.acquireType, state.cardType)),
+          UserMessagesOverlay(CardFormInputScreen(
+              getBotCubit(), state.acquireType, state.cardType)),
         ));
   }
 
   _requireUserAction(BotRequestUserAction state, context) {
     Future.microtask(() => Navigator.push(
           context,
-          UserMessagesOverlay(
-              RequiredUserAction(state.title, state.userDirections)),
+          UserMessagesOverlay(RequiredUserAction(
+              getBotCubit(), state.title, state.userDirections)),
         ));
   }
 
   _openBotDiagnostics() {
     Future.microtask(() => Navigator.push(
           context,
-          UserMessagesOverlay(BotDiagnosticsScreen(botCubit)),
+          UserMessagesOverlay(BotDiagnosticsScreen(getBotCubit())),
         ));
   }
 
   Future<bool> _takeBotTurn() async {
-    await botCubit.takeBotTurn();
+    await getBotCubit().takeBotTurn();
     setState(() {});
     return true;
   }
 
   _goToScoring() {
-    botCubit.alertCustom(
+    getBotCubit().alertCustom(
         "Scoring",
         Center(
           child: Column(
             children: [
               Text("Bot scored"),
-              Text(botCubit.bot.getScore().toString() + " points",
+              Text(getBotCubit().bot.getScore().toString() + " points",
                   style: TextStyle(fontSize: 80)),
             ],
           ),

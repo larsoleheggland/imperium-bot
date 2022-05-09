@@ -42,7 +42,7 @@ enum CardIcon {
 
 enum CardCategory { common, faction }
 
-enum Faction { celts, carthaginians }
+enum Faction { carthaginians, celts }
 
 enum Difficulty { chieftain, warlord, imperator, sovereign, overlord }
 

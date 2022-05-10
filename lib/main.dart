@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:imperium_bot/blocs/bot-bloc.dart';
 import 'package:imperium_bot/data/card-database.dart';
-import 'package:imperium_bot/models/card-enums.dart';
+import 'package:imperium_bot/extensions/enum-extensions.dart';
+import 'package:imperium_bot/extensions/string-extensions.dart';
 import 'package:imperium_bot/theme/custom-colors.dart';
 import 'package:imperium_bot/view/screens/bot-deck-overview.dart';
 import 'package:imperium_bot/view/screens/bot-diagnostics-screen.dart';
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const App(title: 'imperium bot'),
+      home: const App(title: 'Imperium'),
     );
   }
 }
@@ -57,8 +58,8 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   String lastEvent = "";
-  BotCubit? botCubit = null;
-  //BotCubit? botCubit = BotCubit(Faction.carthaginians, Difficulty.chieftain);
+  BotCubit? botCubit;
+  bool isSettingUp = false;
 
   @override
   void initState() {
@@ -70,6 +71,21 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
+    if (botCubit == null) {
+      if (!isSettingUp) {
+        setupBotCubit();
+      }
+      return Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/background.png"),
+              fit: BoxFit.cover,
+            ),
+          ));
+    }
+
     return Scaffold(
       body: Center(
         child: BlocBuilder<BotCubit, BotState>(
@@ -98,6 +114,7 @@ class _AppState extends State<App> {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      Spacer(),
                       if (getBotCubit().bot.isEndOfGameTriggered)
                         endOfGameTriggeredMessage(),
                       generateBotButtons(context, state),
@@ -135,6 +152,8 @@ class _AppState extends State<App> {
                               child: Text("Open bot diagnostics")),
                         ],
                       ),
+                      Spacer(),
+                      _generateBotInfo(),
                     ]),
               );
             }),
@@ -142,26 +161,48 @@ class _AppState extends State<App> {
     );
   }
 
+  _generateBotInfo() {
+    return Container(
+      color: Colors.black,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(
+            child: Text(
+                "Playing against " +
+                    getBotCubit().bot.faction.toShortString().capitalize() +
+                    " (" +
+                    getBotCubit().bot.difficulty.toShortString().capitalize() +
+                    ")",
+                style: TextStyle(fontSize: 15))),
+      ),
+    );
+  }
+
   void reset() {
-    botCubit = null;
-    setState(() {});
+    setState(() {
+      botCubit = null;
+    });
   }
 
   BotCubit getBotCubit() {
+    return botCubit as BotCubit;
+  }
+
+  void setupBotCubit() {
     if (botCubit == null) {
+      isSettingUp = true;
       Future.microtask(() => Navigator.push(
             context,
             UserMessagesOverlay(BotSetupScreen(_setBotCubit)),
           ));
-      botCubit = BotCubit(Faction.carthaginians, Difficulty.imperator);
-      var debug = true;
     }
-
-    return botCubit as BotCubit;
   }
 
-  _setBotCubit(BotCubit botCubit) {
-    botCubit = botCubit;
+  _setBotCubit(BotCubit setupBotCubit) {
+    isSettingUp = false;
+    setState(() {
+      botCubit = setupBotCubit;
+    });
   }
 
   Widget endOfGameTriggeredMessage() {

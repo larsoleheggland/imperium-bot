@@ -32,12 +32,12 @@ class _BotDeckOverviewScreenState extends State<BotDeckOverviewScreen> {
             child: Column(
               children: [
                 // Actions
-                Row(
+                /*Row(
                   children: [
                     ElevatedButton(
                         onPressed: _botDrawCard, child: Text("Draw bot card"))
                   ],
-                ),
+                ),*/
 
                 // Cards in play
 
@@ -111,8 +111,14 @@ class _BotDeckOverviewScreenState extends State<BotDeckOverviewScreen> {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: _generatePlayedCard(),
+        child: Column(
+          children: [
+            Text("Cards in play"),
+            Divider(height: 5),
+            Row(
+              children: _generatePlayedCard(),
+            ),
+          ],
         ),
       ),
     );

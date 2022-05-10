@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:imperium_bot/blocs/bot-bloc.dart';
 import 'package:imperium_bot/extensions/enum-extensions.dart';
+import 'package:imperium_bot/extensions/string-extensions.dart';
 import 'package:imperium_bot/models/card-enums.dart';
 
 class BotSetupScreen extends StatefulWidget {
@@ -21,7 +23,6 @@ class _BotSetupScreenState extends State<BotSetupScreen> {
   late Difficulty selectedDifficulty;
 
   BotSetupStage setupStage = BotSetupStage.factionSelection;
-  late String title = _getTitle();
   _BotSetupScreenState(this.setBotFunction);
 
   @override
@@ -29,11 +30,13 @@ class _BotSetupScreenState extends State<BotSetupScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(title),
+        title: Text(_getTitle()),
       ),
-      backgroundColor: Colors.black87,
-      body: Container(
-        child: _generateSetup(),
+      backgroundColor: Colors.black26,
+      body: SingleChildScrollView(
+        child: Container(
+          child: _generateSetup(),
+        ),
       ),
     );
   }
@@ -78,19 +81,60 @@ class _BotSetupScreenState extends State<BotSetupScreen> {
         padding: const EdgeInsets.all(8.0),
         child: Container(
           width: double.infinity,
-          height: 75,
+          height: 70,
           decoration: BoxDecoration(
+            border: Border.all(color: Colors.white),
+            borderRadius: BorderRadius.all(Radius.circular(10)),
             color: _getDifficultyColor(difficulty),
           ),
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(difficulty.toShortString()),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(difficulty.toShortString().capitalize()),
+                  SizedBox(height: 5),
+                  _generateStars(_getDifficultyStarCount(difficulty)),
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
+  }
+
+  Widget _generateStars(int count) {
+    List<Widget> result = [];
+    for (int i = 0; i < count; i++) {
+      result.add(
+          FaIcon(FontAwesomeIcons.solidStar, color: Colors.yellow, size: 16));
+    }
+
+    for (int i = 0; i < 5 - count; i++) {
+      result.add(FaIcon(FontAwesomeIcons.star, size: 16));
+    }
+
+    return Row(children: result);
+  }
+
+  int _getDifficultyStarCount(Difficulty difficulty) {
+    switch (difficulty) {
+      case Difficulty.chieftain:
+        return 1;
+      case Difficulty.warlord:
+        return 2;
+      case Difficulty.imperator:
+        return 3;
+      case Difficulty.sovereign:
+        return 4;
+      case Difficulty.overlord:
+        return 5;
+    }
+
+    return 0;
   }
 
   Widget _generateSelectFaction() {
@@ -99,15 +143,15 @@ class _BotSetupScreenState extends State<BotSetupScreen> {
       child: Column(
         children: [
           Text("Available factions"),
-          Column(children: _generateImplematedFactionList()),
-          Text("Unvailable factions"),
+          Column(children: _generateImplementedFactionList()),
+          Text("Unavailable factions"),
           Column(children: _generateUnimplementedFactionList()),
         ],
       ),
     );
   }
 
-  List<Widget> _generateImplematedFactionList() {
+  List<Widget> _generateImplementedFactionList() {
     List<Widget> result = [];
     for (var value in Faction.values) {
       if (_implementedFactions().contains(value)) {
@@ -144,11 +188,15 @@ class _BotSetupScreenState extends State<BotSetupScreen> {
           width: double.infinity,
           height: 75,
           decoration: BoxDecoration(
-            color: _getFactionColor(faction),
-          ),
+              color: _getFactionColor(faction),
+              border: Border.all(
+                color: Colors.white,
+                width: 2,
+              ),
+              borderRadius: const BorderRadius.all(Radius.circular(10))),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(faction.toShortString()),
+            child: Center(child: Text(faction.toShortString().capitalize())),
           ),
         ),
       ),
@@ -161,7 +209,7 @@ class _BotSetupScreenState extends State<BotSetupScreen> {
         return Colors.blue;
     }
 
-    return Colors.grey;
+    return Colors.white12;
   }
 
   Color _getDifficultyColor(Difficulty difficulty) {
@@ -188,7 +236,7 @@ class _BotSetupScreenState extends State<BotSetupScreen> {
     }
 
     if (setupStage == BotSetupStage.difficultySelection) {
-      return "Faction selection";
+      return "Difficulty selection";
     }
 
     throw Exception("_getTitle() in bot selection failed. ");

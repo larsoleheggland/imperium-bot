@@ -56,32 +56,17 @@ class Bot {
     setupDrawPile(cards);
     setupDynastyDeck(cards);
     drawCardsToPlayArea();
-
+    difficultySetup();
     extraSetup();
   }
 
-  void reset() {
-    materialTokens = 0;
-    populationTokens = 0;
-    progressTokens = 0;
-
-    Stage stage = Stage.barbarian;
-
-    isEndOfGameTriggered = false;
-    hasGameEnded = false;
-    roundsSinceGameEndTriggered = 0;
-
-    pinnedCards = [];
-    drawPile = CardDeck([], "(Bot) Card deck");
-    dynastyDeck;
-
-    historyDeck = CardDeck([], "(Bot) History Deck");
-    discardPile = CardDeck([], "(Bot) Discard Pile");
-    cardsInPlay = [];
-
-    cardsToBeRemovedFromPlayDeck = [];
-    botLog = [];
-    CardDatabase.initialize();
+  void difficultySetup() {
+    if (difficulty == Difficulty.sovereign ||
+        difficulty == Difficulty.overlord) {
+      materialTokens += 3;
+      populationTokens += 2;
+      progressTokens += 1;
+    }
   }
 
   void log(String text, {BotLogEntryType entryType = BotLogEntryType.info}) {
@@ -132,15 +117,15 @@ class Bot {
   }
 
   void drawCardsToPlayArea() {
-    var cardsToDraw = 4;
+    var cardsToDraw = _getCardCountToPlayEachRound();
 
-    if (latestDiceRoll == 6) {
-      cardsToDraw++;
+    if (retainedCardInPlay != null) {
+      cardsToDraw -= 1;
     }
 
     //initial draw
     if (latestDiceRoll == 0) {
-      cardsToDraw = 5;
+      cardsToDraw = _getCardCountToPlayEachRound();
     }
 
     while (cardsInPlay.length < cardsToDraw) {
@@ -260,7 +245,14 @@ class Bot {
 
     score += progressTokens;
 
-    var pointsForTokens = (materialTokens + populationTokens) / 10;
+    var tokenDivider = 10;
+
+    if (difficulty == Difficulty.sovereign ||
+        difficulty == Difficulty.overlord) {
+      tokenDivider = 5;
+    }
+
+    var pointsForTokens = (materialTokens + populationTokens) / tokenDivider;
     score += pointsForTokens.floor();
 
     for (var card in scoringCards) {
@@ -450,7 +442,7 @@ class Bot {
   }
 
   void cleanUp() {
-    log("Bot does cleanup");
+    log("Bot does cleanup..");
     // Place cards at correct places from in play cards
     for (var card in cardsInPlay) {
       if (cardsToBeRemovedFromPlayDeck.contains(card)) {
@@ -470,6 +462,10 @@ class Bot {
 
     cardsInPlay = [];
     cardsToBeRemovedFromPlayDeck.clear();
+
+    if (difficulty == Difficulty.warlord) {
+      discardTopCards(1);
+    }
 
     drawCardsToPlayArea();
   }
@@ -513,5 +509,20 @@ class Bot {
 
   Future<bool> basicEmpireAction(GameCard card) async {
     return true;
+  }
+
+  _getCardCountToPlayEachRound() {
+    switch (difficulty) {
+      case Difficulty.chieftain:
+        return 4;
+      case Difficulty.warlord:
+        return 4;
+      case Difficulty.imperator:
+        return 5;
+      case Difficulty.sovereign:
+        return 5;
+      case Difficulty.overlord:
+        return 6;
+    }
   }
 }

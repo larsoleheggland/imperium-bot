@@ -51,7 +51,7 @@ class Bot {
     discardPile = CardDeck([], "(Bot) Discard Pile");
     cardsInPlay = [];
 
-    CardDatabase.all.addAll(cards);
+    //CardDatabase.all.addAll(cards);
 
     setupDrawPile(cards);
     setupDynastyDeck(cards);

@@ -20,6 +20,8 @@ import 'view/screens/bot-setup-screen.dart';
 import 'view/widgets/big-button.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 
@@ -103,7 +105,6 @@ class _AppState extends State<App> {
               lastEvent = state.hashCode.toString();
 
               return Container(
-                width: double.infinity,
                 height: double.infinity,
                 decoration: const BoxDecoration(
                   image: DecorationImage(

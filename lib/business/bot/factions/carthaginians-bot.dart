@@ -141,12 +141,12 @@ class CarthaginiansBot extends Bot {
       log("Resolves fame icon: adds one population token, and one material token");
       populationTokens++;
       materialTokens++;
-
+      putCardInHistory(card);
       return true;
     }
 
     // card name = "glory"
-    else if (card.name == "Glory") {
+    else if (card.name.toLowerCase() == "glory") {
       log("Resolves 'glory' card: if able, abandons 3 pinned regions to breakthrough for fame card. Else breaks through for region");
 
       if (getPinnedRegionCount() >= 3) {
@@ -154,7 +154,7 @@ class CarthaginiansBot extends Bot {
         if (await breakthroughFor(<CardType>[CardType.fame])) {
           return true;
         }
-
+      } else {
         if (await breakthroughFor(<CardType>[CardType.region])) {
           return true;
         }
@@ -172,7 +172,7 @@ class CarthaginiansBot extends Bot {
           return true;
         }
       } else if (materialTokens >= 2) {
-        log("Bot spends 2 material tokens, and aquires a civilised or unsiviliced card.");
+        log("Bot spends 2 material tokens, and acquires a civilised or uncivilised card.");
         materialTokens -= 2;
         if (await acquire(
             <CardType>[CardType.civilised, CardType.uncivilised])) {
@@ -190,7 +190,8 @@ class CarthaginiansBot extends Bot {
     // region
 
     else if (card.hasIcon(CardIcon.region)) {
-      log("Resolves 'region' icon: plays region, and alerts user to exile card");
+      log("Resolves 'region' icon: plays region, discards card, and alerts user to exile card");
+      discardTopCards(1);
       playRegion(card);
       await botCubit.alertRequireCardExile();
       return true;
@@ -230,7 +231,7 @@ class CarthaginiansBot extends Bot {
         materialTokens = 0;
         return true;
       } else {
-        log("Bot aquires region.");
+        log("Bot acquires region.");
         if (await acquire(<CardType>[CardType.region])) {
           return true;
         }

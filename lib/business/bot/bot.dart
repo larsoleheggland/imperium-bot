@@ -443,21 +443,24 @@ class Bot {
 
   void cleanUp() {
     log("Bot does cleanup..");
+
+    try {
+      retainedCardInPlay = cardsInPlay[latestDiceRoll - 1];
+    } catch (e) {
+      retainedCardInPlay = null;
+    }
+
     // Place cards at correct places from in play cards
     for (var card in cardsInPlay) {
       if (cardsToBeRemovedFromPlayDeck.contains(card)) {
         log("Bot does not add " + card.name + " to discard pile");
         removedCards.insert(0, card);
         continue;
+      } else if (card == retainedCardInPlay) {
+        log("bot retains card " + card.name);
       } else {
         discardPile.addCard(card);
       }
-    }
-
-    try {
-      retainedCardInPlay = cardsInPlay[latestDiceRoll - 1];
-    } catch (e) {
-      retainedCardInPlay = null;
     }
 
     cardsInPlay = [];

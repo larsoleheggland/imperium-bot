@@ -102,20 +102,22 @@ class _CardFormInputScreenState extends State<CardFormInputScreen> {
       children: [
         RichText(
           text: TextSpan(
-            style: const TextStyle(
-              fontSize: 14.0,
-            ),
+            style: const TextStyle(fontSize: 14.0, color: Colors.white),
             children: <TextSpan>[
               const TextSpan(text: 'The bot is '),
               if (acquireType == CardAcquireType.acquire)
                 const TextSpan(
                     text: 'aqcuiring ',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.white)),
               if (acquireType == CardAcquireType.breakthrough)
                 const TextSpan(
                     text: 'breaking through for ',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-              const TextSpan(text: "a "),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.white)),
+              const TextSpan(
+                text: "a ",
+              ),
               for (var type in _generateTypeList()) type,
             ],
           ),
